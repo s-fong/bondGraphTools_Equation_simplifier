@@ -1,0 +1,112 @@
+# INCOMPLETE
+
+def find_exp(txt, var):
+    print(var)
+    match = []
+    if var == 'f_35': # #f_22
+        j = 10
+    # if '=' in var:
+    try:
+        match = [s for s in txt if '%s = '%var in s][0]
+    except:
+        match = [s for s in txt if '%s = '%var in s]
+    if not match:
+        match = var
+    if match == 'sel': # or 'Af' in match or 'Ar' in match:
+        return match
+    if ('e_' not in match and 'f_' not in match) or 'z' in match and '*f' not in match: # or 'Af' in match or 'Ar' in match
+        return match
+    elif not match:
+        return 0
+    elif len(match)>0:
+        if '=' in match:
+            lhs = match.split(' = ')[0]
+            rhs = match.split(' = ')[-1]
+        else:
+            rhs = match
+        while ((('e_' in rhs and 'e_N' not in rhs) or ('f_' in rhs and 'Af' not in rhs)) or('z' not in rhs and 'Ar' not in rhs and 'sel' not in match and '0{fmol' not in match)):
+            # WHILE: and '*f' not in rhs
+            if match[0] == '_':
+                return 0
+            if '= -' in match and match.count('-') == 1 and '+' not in match:
+                if 'Af' in match or 'Ar' in match:
+                    return match
+                # sign = -1
+                if '= -f' in match:
+                    match = find_exp(txt, rhs[1:]) # if negative sign in front of f
+                    rhs = match.split(' = ')[-1]
+                    match = lhs + ' = -' + rhs
+                else:
+                    j=10 # wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                # match = lhs + ' = -' + rhs
+            elif '+' not in match and '*' not in match and '/' not in match and '-' not in match:
+                match = find_exp(txt, match.split('= ')[-1])
+                rhs = match.split(' = ')[-1]
+                # do not overwrite lhs with a middle variable
+                match = lhs + ' = ' + rhs
+            elif True: #len(rhs.split('+')) == 2: # expand to include n terms
+                if '*' in rhs:
+                    terms = rhs.split('*')
+                    for it, term in enumerate(terms):
+                        if ('e_' in term or 'f_' in term) and 'z' not in term and '*f' not in term and 'Af' not in term and 'Ar' not in term and 'e_N' not in term:
+                            term=find_exp(txt,term)
+                            terms[it] = '('+term.split(' = ')[-1]+')'
+                        else:
+                            terms[it] = term
+                    match = match.split(' = ')[0] + ' = ' + '*'.join(terms)
+                else:
+                    if '+' not in rhs:
+                        # subtraction only
+                        terms = rhs.split('-')
+                        terms = [t for t in terms if t is not '']
+                        for it, term in enumerate(terms):
+                            term=find_exp(txt,term)
+                            terms[it] = term.split(' = ')[-1]
+                        match = match.split(' = ')[0]+' = '+'-'.join(terms)
+                    else:
+                        # addition only
+                        terms = rhs.split('+')
+                        for it, term in enumerate(terms):
+                            term=find_exp(txt,term)
+                            terms[it] = term.split(' = ')[-1]
+                        match = match.split(' = ')[0]+' = '+'+'.join(terms)
+                return match
+            else:
+                break
+        return match
+
+if __name__ == '__main__':
+    path = 'examples\\'
+    inputname = 'cardiac_AP_dynamic_ions.txt'
+    cfname = path + inputname
+
+    with open(cfname,'r') as cf:
+        txt = cf.readlines()
+
+    txt = [t[:-1].replace(';', '') for t in txt]
+    txt = [t for t in txt if t]
+
+    vs = [] # list of variables that do no have init. So v does not contain constants nor state variables
+    vode = [] # list for ODEs
+    for line in txt:
+        if ' var ' in line and 'init' not in line and 'e_' not in line and 'f_' not in line and 'sel' not in line:
+            vs.append(line.split('var ')[-1].split(':')[0])
+        if 'ode(' in line:
+            vode.append(line)
+
+    simpEqns = []
+    sign = 1
+    for v in vs:
+        if '-' in v:
+            sign = -1
+        simpEqns.append(sign*find_exp(txt, v))
+
+    simpEqns.sort()
+    simpEqns += vode
+
+    outputFile = path + 'simplified_' + inputname
+    with open (outputFile, 'w') as fo:
+        for line in simpEqns:
+            fo.write(line + '\n')
+
+
