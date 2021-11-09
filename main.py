@@ -1,11 +1,12 @@
-# INCOMPLETE
+# A recursive method to simplify BGT-CellML equations
+
+import time
 
 def find_exp(txt, var):
-    print(var)
+    # print(var)
     match = []
     if var == 'f_35': # #f_22
         j = 10
-    # if '=' in var:
     try:
         match = [s for s in txt if '%s = '%var in s][0]
     except:
@@ -25,7 +26,6 @@ def find_exp(txt, var):
         else:
             rhs = match
         while ((('e_' in rhs and 'e_N' not in rhs) or ('f_' in rhs and 'Af' not in rhs)) or('z' not in rhs and 'Ar' not in rhs and 'sel' not in match and '0{fmol' not in match)):
-            # WHILE: and '*f' not in rhs
             if match[0] == '_':
                 return 0
             if '= -' in match and match.count('-') == 1 and '+' not in match:
@@ -36,15 +36,12 @@ def find_exp(txt, var):
                     match = find_exp(txt, rhs[1:]) # if negative sign in front of f
                     rhs = match.split(' = ')[-1]
                     match = lhs + ' = -' + rhs
-                else:
-                    j=10 # wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                # match = lhs + ' = -' + rhs
             elif '+' not in match and '*' not in match and '/' not in match and '-' not in match:
                 match = find_exp(txt, match.split('= ')[-1])
                 rhs = match.split(' = ')[-1]
                 # do not overwrite lhs with a middle variable
                 match = lhs + ' = ' + rhs
-            elif True: #len(rhs.split('+')) == 2: # expand to include n terms
+            elif True:
                 if '*' in rhs:
                     terms = rhs.split('*')
                     for it, term in enumerate(terms):
@@ -58,11 +55,14 @@ def find_exp(txt, var):
                     if '+' not in rhs:
                         # subtraction only
                         terms = rhs.split('-')
-                        terms = [t for t in terms if t is not '']
+                        terms = [t for t in terms if t != '']
                         for it, term in enumerate(terms):
                             term=find_exp(txt,term)
                             terms[it] = term.split(' = ')[-1]
-                        match = match.split(' = ')[0]+' = '+'-'.join(terms)
+                        if rhs[0] == '-':
+                            match = match.split(' = ')[0]+' = -'+'-'.join(terms)
+                        else:
+                            match = match.split(' = ')[0]+' = '+'-'.join(terms)
                     else:
                         # addition only
                         terms = rhs.split('+')
@@ -76,6 +76,8 @@ def find_exp(txt, var):
         return match
 
 if __name__ == '__main__':
+    tstart = time.time()
+
     path = 'examples\\'
     inputname = 'cardiac_AP_dynamic_ions.txt'
     cfname = path + inputname
@@ -102,11 +104,17 @@ if __name__ == '__main__':
         simpEqns.append(sign*find_exp(txt, v))
 
     simpEqns.sort()
+    # change '--' to '+'
+    simpEqns = [line.replace('--','+') for line in simpEqns]
     simpEqns += vode
 
     outputFile = path + 'simplified_' + inputname
     with open (outputFile, 'w') as fo:
         for line in simpEqns:
             fo.write(line + '\n')
+        print('Written output file: ', outputFile)
+
+    print('elapsed = ', round(time.time() - tstart,3), ' s')
+
 
 
