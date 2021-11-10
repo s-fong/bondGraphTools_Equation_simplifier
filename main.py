@@ -131,6 +131,28 @@ if __name__ == '__main__':
             fo.write(line + '\n')
         print('Written output file: ', outputFile)
 
+    if True:
+        # write out equations pertaining to a specific channel/component
+        unitWords = ['fmol','per_fmol','fmol_per_sec','fA','fC','J_per_mol','mM']
+
+        channels = ['Na']
+        chd = {c:{'keywords':[],'nonkeywords':[]} for c in channels}
+
+        chd['Na']['keywords'] = ['Na','_m', '_h', '_j','t: second']
+        chd['Na']['nonkeywords'] = ['NaK','NCX']
+
+        for n in channels:
+            channel_outputFile = path + n+'ChannelOnly_' + inputname
+            with open(channel_outputFile, 'w') as co:
+                for line in decs:
+                    lhs = line.split('=')[0]
+                    for u in unitWords:
+                        lhs = lhs.replace(u,'')
+                    if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
+                        co.write(line + '\n')
+                        # ch_lines.append(line)
+            print('Written output file: ', channel_outputFile)
+
     print('elapsed = ', round(time.time() - tstart,3), ' s')
 
 
