@@ -87,6 +87,7 @@ def find_exp(txt, var):
         return match
 
 
+
 if __name__ == '__main__':
     tstart = time.time()
 
@@ -130,8 +131,6 @@ if __name__ == '__main__':
 
     simpEqns = []
     for v in vs:
-        if 'I_stim' in v:
-            j = 10
         newLine = find_exp(txt, v)
         if '= sel' not in newLine and newLine != v:
             simpEqns.append(newLine)
@@ -153,22 +152,32 @@ if __name__ == '__main__':
 
         unitWords = ['fmol','per_fmol','fmol_per_sec','fA','fC','J_per_mol','mM']
 
-        channels = ['Na','K1','Kp','L']
-        chd = {c:{'keywords':[],'nonkeywords':[]} for c in channels}
+        channels = ['Na','K1','Kp','NaK','LCC','NCX']
+        special_channels = ['NaK','LCC','NCX']
+        chd = {c:{'keywords':[],'nonkeywords':[],'fluxname':[]} for c in channels}
 
         chd['Na']['keywords'] = ['Na','_m', '_h', '_j']
         chd['Na']['nonkeywords'] = ['NaK','NCX']
-        chd['Na']['fluxname'] = ['v_Na']
         chd['K1']['keywords'] = ['Ki','Ke','K1']
         chd['K1']['nonkeywords'] = ['LCC']
         chd['Kp']['keywords'] = ['Ki','Ke','Kp']
         chd['Kp']['nonkeywords'] = []
-        chd['Kp']['keywords'] = ['K','Ke','Kp']
-        chd['Kp']['nonkeywords'] = []
+        chd['NaK']['keywords'] = ['NaK','_R','Nai','Nae','Ki','Ke']
+        chd['NaK']['nonkeywords'] = []
+        chd['LCC']['keywords'] = ['LCC']
+        chd['LCC']['nonkeywords'] = []
+        chd['NCX']['keywords'] = ['NCX']
+        chd['NCX']['nonkeywords'] = []
 
         for key in chd.keys():
             chd[key]['keywords'].append('t: second')
             chd[key]['keywords'].append('mem')
+            if key not in special_channels:
+                chd[key]['fluxname'] = ['v_'+key]
+            elif key == 'LCC':
+                chd[key]['fluxname'] = ['v_LCC_Ca1','v_LCC_Ca2','v_LCC_K1','v_LCC_K2']
+            else:
+                chd[key]['fluxname'] = []
 
         for n in channels:
             channel_outputFile = path + n+'ChannelOnly_' + inputname
@@ -179,8 +188,17 @@ if __name__ == '__main__':
                         lhs = lhs.replace(u,'')
                     if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
                         co.write(line + '\n')
-                for line in vdict['v_'+n]:
-                    co.write(line + '\n')
+                for flux in chd[n]['fluxname']:
+                    for line in vdict[flux]:
+                        co.write(line + '\n')
+                # try:
+                #     for line in vdict['v_'+n]:
+                #         co.write(line + '\n')
+                # except:
+                #     for flux in chd[key]['fluxname']:
+                #         for line in vdict[flux]:
+                #             co.write(line + '\n')
+
             print('Written output file: ', channel_outputFile)
 
     print('elapsed = ', round(time.time() - tstart,3), ' s')
