@@ -3,9 +3,9 @@
 import time
 
 def find_exp(txt, var):
-    # print(var)
+    print(var)
     match = []
-    if var == 'f_35': # #f_22
+    if var == 'v_Ke': # # v_Nae f_3
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -15,6 +15,8 @@ def find_exp(txt, var):
         match = var
     if match == 'sel': # or 'Af' in match or 'Ar' in match:
         return match
+
+    allowedRHS = ['z','Ar','sel','0{fmol','V_mem','v_','I_stim'] #'z' not in rhs and 'Ar' not in rhs and 'sel' not in rhs and '0{fmol' not in rhs and 'V_mem' not in rhs
     if ('e_' not in match and 'f_' not in match) or 'z' in match and '*f' not in match: # or 'Af' in match or 'Ar' in match
         return match
     elif not match:
@@ -25,7 +27,7 @@ def find_exp(txt, var):
             rhs = match.split(' = ')[-1]
         else:
             rhs = match
-        while ((('e_' in rhs and 'e_N' not in rhs) or ('f_' in rhs and 'Af' not in rhs)) or('z' not in rhs and 'Ar' not in rhs and 'sel' not in match and '0{fmol' not in match)):
+        while ((('e_' in rhs and 'e_N' not in rhs) or ('f_' in rhs and 'Af' not in rhs)) or([k not in rhs for k in allowedRHS]==[True]*len(allowedRHS))):
             if match[0] == '_':
                 return 0
             if '= -' in match and match.count('-') == 1 and '+' not in match:
@@ -42,7 +44,7 @@ def find_exp(txt, var):
                 # do not overwrite lhs with a middle variable
                 match = lhs + ' = ' + rhs
             elif True:
-                if '*' in rhs:
+                if '*' in rhs and '+' not in rhs and '-' not in rhs:
                     terms = rhs.split('*')
                     for it, term in enumerate(terms):
                         if ('e_' in term or 'f_' in term) and 'z' not in term and '*f' not in term and 'Af' not in term and 'Ar' not in term and 'e_N' not in term:
@@ -67,6 +69,12 @@ def find_exp(txt, var):
                         # addition only
                         terms = rhs.split('+')
                         for it, term in enumerate(terms):
+                            if '*' in term:
+                                terms2 = term.split('*')
+                                for it2, term2 in enumerate(terms2):
+                                    term2 = find_exp(txt, term2)
+                                    terms2[it2] = term2.split(' = ')[-1]
+                                term = '*'.join(terms2)
                             term=find_exp(txt,term)
                             terms[it] = term.split(' = ')[-1]
                         match = match.split(' = ')[0]+' = '+'+'.join(terms)
@@ -94,7 +102,7 @@ if __name__ == '__main__':
         if ' var ' in line and 'init' not in line and 'e_' not in line and 'f_' not in line and 'sel' not in line:
             vs.append(line.split('var ')[-1].split(':')[0])
         if 'ode(' in line:
-            vode.append(line)
+            vode.append(line + ';')
 
     simpEqns = []
     sign = 1
@@ -105,7 +113,7 @@ if __name__ == '__main__':
 
     simpEqns.sort()
     # change '--' to '+'
-    simpEqns = [line.replace('--','+') for line in simpEqns]
+    simpEqns = [line.replace('--','+')+';' for line in simpEqns]
     simpEqns += vode
 
     outputFile = path + 'simplified_' + inputname
