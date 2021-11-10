@@ -3,9 +3,10 @@
 import time
 
 def find_exp(txt, var):
+    global lhs
     print(var)
     match = []
-    if var == 'v_Ke': # # v_Nae f_3
+    if var == 'v_TRPN': # # v_Nae f_3
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -37,11 +38,13 @@ def find_exp(txt, var):
                 if '= -f' in match:
                     match = find_exp(txt, rhs[1:]) # if negative sign in front of f
                     rhs = match.split(' = ')[-1]
+                    lhs = var
                     match = lhs + ' = -' + rhs
             elif '+' not in match and '*' not in match and '/' not in match and '-' not in match:
                 match = find_exp(txt, match.split('= ')[-1])
                 rhs = match.split(' = ')[-1]
                 # do not overwrite lhs with a middle variable
+                lhs = var
                 match = lhs + ' = ' + rhs
             elif True:
                 if '*' in rhs and '+' not in rhs and '-' not in rhs:
@@ -112,8 +115,7 @@ if __name__ == '__main__':
         simpEqns.append(sign*find_exp(txt, v))
 
     simpEqns.sort()
-    # change '--' to '+'
-    simpEqns = [line.replace('--','+')+';' for line in simpEqns]
+    simpEqns = [line.replace('--','+').replace('+-','-')+';' for line in simpEqns]
     simpEqns += vode
 
     outputFile = path + 'simplified_' + inputname
