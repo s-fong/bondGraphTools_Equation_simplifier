@@ -86,6 +86,7 @@ def find_exp(txt, var):
                 break
         return match
 
+
 if __name__ == '__main__':
     tstart = time.time()
 
@@ -101,11 +102,16 @@ if __name__ == '__main__':
 
     vs = [] # list of variables that do no have init. So v does not contain constants nor state variables
     vode = [] # list for ODEs
+    decs = [] # list of declarations of variables
     for line in txt:
-        if ' var ' in line and 'init' not in line and 'e_' not in line and 'f_' not in line and 'sel' not in line:
-            vs.append(line.split('var ')[-1].split(':')[0])
-        if 'ode(' in line:
+        if ' var ' in line and  'e_' not in line and 'f_' not in line:
+            if 'init' not in line and 'sel' not in line:
+                vs.append(line.split('var ')[-1].split(':')[0])
+            decs.append(line+';')
+        elif 'ode(' in line:
             vode.append(line + ';')
+        # elif 'var ' in line:
+        #     decs.append(line)
 
     simpEqns = []
     sign = 1
@@ -117,10 +123,11 @@ if __name__ == '__main__':
     simpEqns.sort()
     simpEqns = [line.replace('--','+').replace('+-','-')+';' for line in simpEqns]
     simpEqns += vode
+    decs += simpEqns
 
     outputFile = path + 'simplified_' + inputname
     with open (outputFile, 'w') as fo:
-        for line in simpEqns:
+        for line in decs:
             fo.write(line + '\n')
         print('Written output file: ', outputFile)
 
