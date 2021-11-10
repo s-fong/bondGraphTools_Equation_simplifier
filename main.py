@@ -6,7 +6,7 @@ def find_exp(txt, var):
     global lhs
     print(var)
     match = []
-    if var == 'v_TRPN': # # v_Nae f_3
+    if var == 'f_30': # # I_mem
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -14,10 +14,10 @@ def find_exp(txt, var):
         match = [s for s in txt if '%s = '%var in s]
     if not match:
         match = var
-    if match == 'sel': # or 'Af' in match or 'Ar' in match:
-        return match
+    if '= sel' in match: # or 'Af' in match or 'Ar' in match:
+        return var
 
-    allowedRHS = ['z','Ar','sel','0{fmol','V_mem','v_','I_stim'] #'z' not in rhs and 'Ar' not in rhs and 'sel' not in rhs and '0{fmol' not in rhs and 'V_mem' not in rhs
+    allowedRHS = ['z','Ar','0{fmol','V_mem','v_','I_stim'] # 'sel'
     if ('e_' not in match and 'f_' not in match) or 'z' in match and '*f' not in match: # or 'Af' in match or 'Ar' in match
         return match
     elif not match:
@@ -100,46 +100,75 @@ if __name__ == '__main__':
     txt = [t[:-1].replace(';', '') for t in txt]
     txt = [t for t in txt if t]
 
+    v_names = ['I_stim','Na','K','K1','Kp','LCC_Ca1','LCC_Ca2','LCC_K1','LCC_K2'] #,'NaK','NCX'
+    v_names = ['v_'+n if 'I_stim' not in n else n for n in v_names]
     vs = [] # list of variables that do no have init. So v does not contain constants nor state variables
     vode = [] # list for ODEs
     decs = [] # list of declarations of variables
-    for line in txt:
+    vrates = []
+    vdict = {c:[] for c in v_names}
+    vstart = False
+    for ii, line in enumerate(txt):
         if ' var ' in line and  'e_' not in line and 'f_' not in line:
             if 'init' not in line and 'sel' not in line:
                 vs.append(line.split('var ')[-1].split(':')[0])
+                # copy over rate equations for each channel - happens over several lines
             decs.append(line+';')
         elif 'ode(' in line:
             vode.append(line + ';')
-        # elif 'var ' in line:
-        #     decs.append(line)
+        elif '= sel' in line:
+            vstart = True
+            fluxname = line.split(' =')[0].replace(' ','')
+        elif 'endsel' in line:
+            vstart = False
+            vdict[fluxname].append(line+';')
+        if vstart:
+            if '= sel' not in line and 'otherwise' not in line:
+                line += ';'
+            vrates.append(line)
+            vdict[fluxname].append(line)
 
     simpEqns = []
-    sign = 1
     for v in vs:
-        if '-' in v:
-            sign = -1
-        simpEqns.append(sign*find_exp(txt, v))
+        if 'I_stim' in v:
+            j = 10
+        newLine = find_exp(txt, v)
+        if '= sel' not in newLine and newLine != v:
+            simpEqns.append(newLine)
 
     simpEqns.sort()
-    simpEqns = [line.replace('--','+').replace('+-','-')+';' for line in simpEqns]
-    simpEqns += vode
+    simpEqns = [line.replace('--','+').replace('+-','-').replace('+0{fmol_per_sec}','').replace('-0{fmol_per_sec}','')+';' for line in simpEqns]
+    simpEqns += vode #+ vrates
     decs += simpEqns
 
     outputFile = path + 'simplified_' + inputname
     with open (outputFile, 'w') as fo:
-        for line in decs:
+        for line in decs+vrates:
             fo.write(line + '\n')
         print('Written output file: ', outputFile)
 
     if True:
-        # write out equations pertaining to a specific channel/component
+
+        # write out equations pertaining to a specific channel/component in its own file
+
         unitWords = ['fmol','per_fmol','fmol_per_sec','fA','fC','J_per_mol','mM']
 
-        channels = ['Na']
+        channels = ['Na','K1','Kp','L']
         chd = {c:{'keywords':[],'nonkeywords':[]} for c in channels}
 
-        chd['Na']['keywords'] = ['Na','_m', '_h', '_j','t: second']
+        chd['Na']['keywords'] = ['Na','_m', '_h', '_j']
         chd['Na']['nonkeywords'] = ['NaK','NCX']
+        chd['Na']['fluxname'] = ['v_Na']
+        chd['K1']['keywords'] = ['Ki','Ke','K1']
+        chd['K1']['nonkeywords'] = ['LCC']
+        chd['Kp']['keywords'] = ['Ki','Ke','Kp']
+        chd['Kp']['nonkeywords'] = []
+        chd['Kp']['keywords'] = ['K','Ke','Kp']
+        chd['Kp']['nonkeywords'] = []
+
+        for key in chd.keys():
+            chd[key]['keywords'].append('t: second')
+            chd[key]['keywords'].append('mem')
 
         for n in channels:
             channel_outputFile = path + n+'ChannelOnly_' + inputname
@@ -150,7 +179,8 @@ if __name__ == '__main__':
                         lhs = lhs.replace(u,'')
                     if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
                         co.write(line + '\n')
-                        # ch_lines.append(line)
+                for line in vdict['v_'+n]:
+                    co.write(line + '\n')
             print('Written output file: ', channel_outputFile)
 
     print('elapsed = ', round(time.time() - tstart,3), ' s')
