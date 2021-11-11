@@ -3,10 +3,11 @@
 import time
 
 def find_exp(txt, var):
-    global lhs
+    # global lhs
+    mathSymbols = ['+','-','*','/']
     print(var)
     match = []
-    if var == 'f_30': # # I_mem
+    if var == 'Ar_K': # # I_mem
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -52,10 +53,17 @@ def find_exp(txt, var):
                     for it, term in enumerate(terms):
                         if ('e_' in term or 'f_' in term) and 'z' not in term and '*f' not in term and 'Af' not in term and 'Ar' not in term and 'e_N' not in term:
                             term=find_exp(txt,term)
-                            terms[it] = '('+term.split(' = ')[-1]+')'
+                            newRHS = term.split(' = ')[-1]
+                            if any([m in newRHS for m in mathSymbols]):
+                                terms[it] = '('+newRHS+')'
+                            else:
+                                terms[it] = newRHS
                         else:
                             terms[it] = term
-                    match = match.split(' = ')[0] + ' = ' + '*'.join(terms)
+                    if rhs[0] != '(' and rhs[-1] != ')':
+                        match = match.split(' = ')[0] + ' = (' + '*'.join(terms) + ')' # but don't bracket if there are already brackets
+                    else:
+                        match = match.split(' = ')[0] + ' = ' + '*'.join(terms) # but don't bracket if there are already brackets
                 else:
                     if '+' not in rhs:
                         # subtraction only
@@ -122,9 +130,10 @@ if __name__ == '__main__':
             fluxname = line.split(' =')[0].replace(' ','')
         elif 'endsel' in line:
             vstart = False
+            vrates.append(line+';')
             vdict[fluxname].append(line+';')
         if vstart:
-            if '= sel' not in line and 'otherwise' not in line:
+            if '= sel' not in line and 'otherwise' not in line and 'case' not in line:
                 line += ';'
             vrates.append(line)
             vdict[fluxname].append(line)
