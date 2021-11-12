@@ -1,5 +1,7 @@
 # A recursive method to simplify BGT-CellML equations
 
+# TODO: add var declarations (decs) of all ODE variables
+
 import time
 
 def find_exp(txt, var):
@@ -7,7 +9,7 @@ def find_exp(txt, var):
     mathSymbols = ['+','-','*','/']
     print(var)
     match = []
-    if var == 'Ar_K': # # I_mem
+    if var == 'Af_r5': # # I_mem
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -18,7 +20,7 @@ def find_exp(txt, var):
     if '= sel' in match: # or 'Af' in match or 'Ar' in match:
         return var
 
-    allowedRHS = ['z','Ar','0{fmol','V_mem','v_','I_stim'] # 'sel'
+    allowedRHS = ['z','Af','Ar','mu','0{fmol','V_mem','v_','I_stim'] # 'sel'
     if ('e_' not in match and 'f_' not in match) or 'z' in match and '*f' not in match: # or 'Af' in match or 'Ar' in match
         return match
     elif not match:
@@ -118,7 +120,9 @@ if __name__ == '__main__':
     vdict = {c:[] for c in v_names}
     vstart = False
     for ii, line in enumerate(txt):
-        if ' var ' in line and  'e_' not in line and 'f_' not in line:
+        if 'var Af_R1: J_per_mol' in line:
+            j = 10
+        if ' var ' in line and 'var e_' not in line and 'var f_' not in line and 'init:' not in line:
             if 'init' not in line and 'sel' not in line:
                 vs.append(line.split('var ')[-1].split(':')[0])
                 # copy over rate equations for each channel - happens over several lines
