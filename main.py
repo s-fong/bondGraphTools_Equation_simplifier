@@ -199,8 +199,8 @@ if __name__ == '__main__':
                     if n == 'LCC' and 'fCa' in line:
                         j = 10
                     lhs = line.split('=')[0]
-                    for u in unitWords:
-                        lhs = lhs.replace(u,'')
+                    # for u in unitWords:
+                    #     lhs = lhs.replace(u,'')
                     if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
                         co.write(line + '\n')
                 for flux in chd[n]['fluxname']:
