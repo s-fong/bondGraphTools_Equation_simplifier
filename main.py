@@ -196,7 +196,7 @@ if __name__ == '__main__':
             channel_outputFile = path + n+'ChannelOnly_' + inputname
             with open(channel_outputFile, 'w') as co:
                 for line in decs:
-                    if n == 'LCC' and 'fCa' in line:
+                    if n == 'LCC' and 'fCa' in line and 'var' not in line:
                         j = 10
                     lhs = line.split('=')[0]
                     # for u in unitWords:
