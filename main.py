@@ -177,7 +177,7 @@ if __name__ == '__main__':
         chd['Kp']['nonkeywords'] = []
         chd['NaK']['keywords'] = ['NaK','_R','Nai','Nae','Ki','Ke']
         chd['NaK']['nonkeywords'] = []
-        chd['LCC']['keywords'] = ['LCC']
+        chd['LCC']['keywords'] = ['LCC','_fCa','_f1','_f2','_f3','d0']
         chd['LCC']['nonkeywords'] = []
         chd['NCX']['keywords'] = ['NCX']
         chd['NCX']['nonkeywords'] = []
@@ -196,6 +196,8 @@ if __name__ == '__main__':
             channel_outputFile = path + n+'ChannelOnly_' + inputname
             with open(channel_outputFile, 'w') as co:
                 for line in decs:
+                    if n == 'LCC' and 'fCa' in line:
+                        j = 10
                     lhs = line.split('=')[0]
                     for u in unitWords:
                         lhs = lhs.replace(u,'')
