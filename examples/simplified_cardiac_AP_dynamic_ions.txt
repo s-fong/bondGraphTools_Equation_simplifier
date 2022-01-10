@@ -1,417 +1,1268 @@
-        Am_K = zK*(F*(q_mem/C_m))
-        Am_K1 = zK*(F*(q_mem/C_m))
-        Am_Kp = zK*(F*(q_mem/C_m))
-        Am_LCC_Ca1 = zCa*(F*(q_mem/C_m))
-        Am_LCC_Ca2 = zCa*(F*(q_mem/C_m))
-        Am_LCC_K1 = zK*(F*(q_mem/C_m))
-        Am_LCC_K2 = zK*(F*(q_mem/C_m))
-        Am_Na = zNa*(F*(q_mem/C_m))
-        Ar_K = R*T*ln(K_Ke*x_Ke)+R*T*ln(K_21_K*x_S21_K)+nK*(R*T*ln(K_Ke*x_Ke))
-        Ar_K1 = R*T*ln(K_Ke*x_Ke)+R*T*ln(K_O_K1*x_O_K1)+nK*(R*T*ln(K_Ke*x_Ke))
-        Ar_Kp = R*T*ln(K_Ke*x_Ke)+R*T*ln(K_O_Kp*x_O_Kp)
-        Ar_LCC_Ca1 = R*T*ln(K_Cae*x_Cae)+R*T*ln(K_111_LCC*x_S111_LCC)
-        Ar_LCC_Ca2 = R*T*ln(K_Cae*x_Cae)+R*T*ln(K_121_LCC*x_S121_LCC)
-        Ar_LCC_K1 = R*T*ln(K_Ke*x_Ke)+R*T*ln(K_111_LCC*x_S111_LCC)
-        Ar_LCC_K2 = R*T*ln(K_Ke*x_Ke)+R*T*ln(K_121_LCC*x_S121_LCC)
-        Ar_Na = R*T*ln(K_Nae*x_Nae)+R*T*ln(K_311_Na*x_S311_Na)
-        Ar_R1 = R*T*ln(K_Ki*x_Ki)+R*T*ln(K_2_NaK*x_P2)
-        Ar_R10 = R*T*ln(K_Nae*x_Nae)+R*T*ln(K_11_NaK*x_P11)
-        Ar_R11 = R*T*ln(K_12_NaK*x_P12)
-        Ar_R12 = R*T*ln(K_13_NaK*x_P13)
-        Ar_R13 = R*T*ln(K_H*x_H)+R*T*ln(K_P*x_P_i)+R*T*ln(K_14_NaK*x_P14)
-        Ar_R14 = R*T*ln(K_15_NaK*x_P15)
-        Ar_R15 = R*T*ln(K_1_NaK*x_P1)
-        Ar_R2 = R*T*ln(K_3_NaK*x_P3)+R*T*ln(K_Ki*x_Ki)
-        Ar_R3 = R*T*ln(K_4_NaK*x_P4)
-        Ar_R4 = R*T*ln(K_5_NaK*x_P5)
-        Ar_R5 = R*T*ln(K_6_NaK*x_P6)+zF_5*(q_mem/C_m)
-        Ar_R6 = R*T*ln(K_7_NaK*x_P7)+R*T*ln(K_MgADP*x_MgADP)
-        Ar_R7 = R*T*ln(K_8_NaK*x_P8)
-        Ar_R8 = zF_8*(q_mem/C_m+R)*T*ln(K_Nae*x_Nae)+R*T*ln(K_9_NaK*x_P9)
-        Ar_R9 = R*T*ln(K_10_NaK*x_P10)+R*T*ln(K_Nae*x_Nae)
-        Ar_X00 = R*T*ln(K_10_K*x_S10_K)+z_rX*(F*(q_mem/C_m))
-        Ar_X01 = R*T*ln(K_11_K*x_S11_K)+z_rX*(F*(q_mem/C_m))
-        Ar_X10 = R*T*ln(K_20_K*x_S20_K)+z_rX*(F*(q_mem/C_m))
-        Ar_X11 = R*T*ln(K_21_K*x_S21_K)+z_rX*(F*(q_mem/C_m))
-        Ar_b1 = R*T*ln(K_TRPNCa*x_TRPNCa)
-        Ar_b2 = R*T*ln(K_CMDNCa*x_CMDNCa)
-        Ar_d000 = R*T*ln(K_100_LCC*x_S100_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_d001 = R*T*ln(K_101_LCC*x_S101_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_d010 = R*T*ln(K_110_LCC*x_S110_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_d011 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_d020 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_d021 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rd*(F*(q_mem/C_m))
-        Ar_f1_000 = R*T*ln(K_010_LCC*x_S010_LCC)+z_rf1*(F*(q_mem/C_m))
-        Ar_f1_001 = R*T*ln(K_011_LCC*x_S011_LCC)+z_rf1*(F*(q_mem/C_m))
-        Ar_f1_100 = R*T*ln(K_110_LCC*x_S110_LCC)+z_rf1*(F*(q_mem/C_m))
-        Ar_f1_101 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rf1*(F*(q_mem/C_m))
-        Ar_f2_000 = R*T*ln(K_020_LCC*x_S020_LCC)+z_rf2*(F*(q_mem/C_m))
-        Ar_f2_001 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rf2*(F*(q_mem/C_m))
-        Ar_f2_100 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rf2*(F*(q_mem/C_m))
-        Ar_f2_101 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rf2*(F*(q_mem/C_m))
-        Ar_f3_010 = R*T*ln(K_020_LCC*x_S020_LCC)+z_rf3*(F*(q_mem/C_m))
-        Ar_f3_011 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rf3*(F*(q_mem/C_m))
-        Ar_f3_110 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rf3*(F*(q_mem/C_m))
-        Ar_f3_111 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rf3*(F*(q_mem/C_m))
-        Ar_fCa00 = R*T*ln(K_001_LCC*x_S001_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_fCa01 = R*T*ln(K_011_LCC*x_S011_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_fCa02 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_fCa10 = R*T*ln(K_101_LCC*x_S101_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_fCa11 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_fCa12 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rCa*(R*T*ln(K_Cai*x_Cai))
-        Ar_gK1 = R*T*ln(K_O_K1*x_O_K1)+z_rK1*(F*(q_mem/C_m))
-        Ar_gKp = R*T*ln(K_O_Kp*x_O_Kp)+z_r_Kp*(F*(q_mem/C_m))
-        Ar_h000 = R*T*ln(K_010_Na*x_S010_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h001 = R*T*ln(K_011_Na*x_S011_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h100 = R*T*ln(K_110_Na*x_S110_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h101 = R*T*ln(K_111_Na*x_S111_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h200 = R*T*ln(K_210_Na*x_S210_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h201 = R*T*ln(K_211_Na*x_S211_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h300 = R*T*ln(K_310_Na*x_S310_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_h301 = R*T*ln(K_311_Na*x_S311_Na)+z_rh*(F*(q_mem/C_m))
-        Ar_i00 = R*T*ln(K_01_K*x_S01_K)+z_rXi*(F*(q_mem/C_m))
-        Ar_i10 = R*T*ln(K_11_K*x_S11_K)+z_rXi*(F*(q_mem/C_m))
-        Ar_i20 = R*T*ln(K_21_K*x_S21_K)+z_rXi*(F*(q_mem/C_m))
-        Ar_j000 = R*T*ln(K_001_Na*x_S001_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j010 = R*T*ln(K_011_Na*x_S011_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j100 = R*T*ln(K_101_Na*x_S101_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j110 = R*T*ln(K_111_Na*x_S111_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j200 = R*T*ln(K_201_Na*x_S201_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j210 = R*T*ln(K_211_Na*x_S211_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j300 = R*T*ln(K_301_Na*x_S301_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_j310 = R*T*ln(K_311_Na*x_S311_Na)+z_rj*(F*(q_mem/C_m))
-        Ar_m000 = R*T*ln(K_100_Na*x_S100_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m001 = R*T*ln(K_101_Na*x_S101_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m010 = R*T*ln(K_110_Na*x_S110_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m011 = R*T*ln(K_111_Na*x_S111_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m100 = R*T*ln(K_200_Na*x_S200_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m101 = R*T*ln(K_201_Na*x_S201_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m110 = R*T*ln(K_210_Na*x_S210_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m111 = R*T*ln(K_211_Na*x_S211_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m200 = R*T*ln(K_300_Na*x_S300_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m201 = R*T*ln(K_301_Na*x_S301_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m210 = R*T*ln(K_310_Na*x_S310_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_m211 = R*T*ln(K_311_Na*x_S311_Na)+z_rm*(F*(q_mem/C_m))
-        Ar_r1 = nNai_NCX*(R*T*ln(K_Nai*x_Nai))+R*T*ln(K_2_NCX*x_P2_NCX)
-        Ar_r2 = R*T*ln(K_3_NCX*x_P3_NCX)
-        Ar_r3 = R*T*ln(K_4_NCX*x_P4_NCX)
-        Ar_r4 = R*T*ln(K_5_NCX*x_P5_NCX)+R*T*ln(K_Cae*x_Cae)
-        Ar_r5 = R*T*ln(K_6_NCX*x_P6_NCX)
-        Ar_r6 = R*T*ln(K_1_NCX*x_P1_NCX)+zr_NCX*(F*(q_mem/C_m))
-        I_mem = F*(zNa*(sel+0{fmol_per_sec})+z_rm*(kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T))))-z_fm*(kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T))))+z_rm*(kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T))))-z_fm*(kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T))))+z_rm*(kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T))))-z_fm*(kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T))))+z_rm*(kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T))))-z_fm*(kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T))))+z_rm*(kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T))))-z_fm*(kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T))))+z_rh*(kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T))))-z_fh*(kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T))))+z_rh*(kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T))))-z_fh*(kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T))))+z_rj*(kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T))))-z_fj*(kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T))))+z_rj*(kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T))))-z_fj*(kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T))))+z_rj*(kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T))))-z_fj*(kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T))))+z_rm*(kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T))))-z_fm*(kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T))))+z_rh*(kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T))))-z_fh*(kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T))))+z_rh*(kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T))))-z_fh*(kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T))))+z_rj*(kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T))))-z_fj*(kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T))))+z_rm*(kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T))))-z_fm*(kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T))))+z_rm*(kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T))))-z_fm*(kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T))))+z_rm*(kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T))))-z_fm*(kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T))))+z_rm*(kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T))))-z_fm*(kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T))))+z_rm*(kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T))))-z_fm*(kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T))))+z_rh*(kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T))))-z_fh*(kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T))))+z_rh*(kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T))))-z_fh*(kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T))))+z_rj*(kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T))))-z_fj*(kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T))))+z_rj*(kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T))))-z_fj*(kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T))))+z_rj*(kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T))))-z_fj*(kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T))))+z_rj*(kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T))))-z_fj*(kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T))))+z_rm*(kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T))))-z_fm*(kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T))))+z_rh*(kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T))))-z_fh*(kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T))))+z_rh*(kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T))))-z_fh*(kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T)))))+F*(zK*(sel+0{fmol_per_sec})+z_rK1*(kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T))))-z_fK1*(kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T)))))+F*(zK*(sel+0{fmol_per_sec})+z_rXi*(kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T))))-z_fXi*(kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T))))+z_rXi*(kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T))))-z_fXi*(kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T))))+z_rX*(kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T))))-z_fX*(kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T))))+z_rX*(kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T))))-z_fX*(kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T))))+z_rXi*(kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T))))-z_fXi*(kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T))))+z_rX*(kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T))))-z_fX*(kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T))))+z_rX*(kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T))))-z_fX*(kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T)))))+F*(zK*(sel+0{fmol_per_sec})+z_r_Kp*(kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T))))-z_f_Kp*(kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T)))))+F*(z_rf2*(kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T))))-z_ff2*(kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T))))+z_rf3*(kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T))))-z_ff3*(kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T))))+z_rf1*(kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T))))-z_ff1*(kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T))))+z_rf2*(kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T))))-z_ff2*(kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T))))+z_rf3*(kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T))))-z_ff3*(kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T))))+z_rf1*(kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T))))-z_ff1*(kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T))))+z_rd*(kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T))))-z_fd*(kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T))))+z_rd*(kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T))))-z_fd*(kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T))))+z_rd*(kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T))))-z_fd*(kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T))))+z_rf3*(kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T))))-z_ff3*(kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T))))+z_rf2*(kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T))))-z_ff2*(kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T))))+z_rf1*(kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T))))-z_ff1*(kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T))))+z_rf3*(kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T))))-z_ff3*(kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T))))+z_rf2*(kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T))))-z_ff2*(kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T))))+z_rf1*(kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T))))-z_ff1*(kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T))))+z_rd*(kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T))))-z_fd*(kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T))))+z_rd*(kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T))))-z_fd*(kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T))))+z_rd*(kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T))))-z_fd*(kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T))))-zCa*(sel+0{fmol_per_sec})+zCa*(sel+0{fmol_per_sec})-zK*(sel+0{fmol_per_sec})+zK*(sel+0{fmol_per_sec}))+zF_8*(kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T))))+zF_5*(kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T))))+F*(zf_NCX*(kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T))))+zr_NCX*(kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T)))))+sel
+        var t: second {init: 0};
+        var R: J_per_K_per_mol {init: 8.314};
+        var T: kelvin {init: 310};
+        var F: C_per_mol {init: 96485};
+        var C_m: fF {init: 153400};
+        var K_000_LCC: per_fmol {init: 1.3174};
+        var K_000_Na: per_fmol {init: 0.0073376};
+        var K_001_LCC: per_fmol {init: 1565.0581};
+        var K_001_Na: per_fmol {init: 23718.0222};
+        var K_00_K: per_fmol {init: 128.6868};
+        var K_010_LCC: per_fmol {init: 53.3957};
+        var K_010_Na: per_fmol {init: 17499.8767};
+        var K_011_LCC: per_fmol {init: 63435.6844};
+        var K_011_Na: per_fmol {init: 56566767727.4036};
+        var K_01_K: per_fmol {init: 22.3033};
+        var K_020_LCC: per_fmol {init: 28.5543};
+        var K_021_LCC: per_fmol {init: 33923.3476};
+        var K_100_LCC: per_fmol {init: 0.26529};
+        var K_100_Na: per_fmol {init: 1.5633e-05};
+        var K_101_LCC: per_fmol {init: 315.1706};
+        var K_101_Na: per_fmol {init: 50.5317};
+        var K_10_K: per_fmol {init: 16.5777};
+        var K_10_NaK: per_fmol {init: 5076.1941};
+        var K_110_LCC: per_fmol {init: 10.7528};
+        var K_110_Na: per_fmol {init: 37.2839};
+        var K_111_LCC: per_fmol {init: 12774.6463};
+        var K_111_Na: per_fmol {init: 120516694.0958};
+        var K_11_K: per_fmol {init: 2.8732};
+        var K_11_NaK: per_fmol {init: 10.4383};
+        var K_120_LCC: per_fmol {init: 5.7502};
+        var K_121_LCC: per_fmol {init: 6831.4667};
+        var K_12_NaK: per_fmol {init: 1.7361};
+        var K_13_NaK: per_fmol {init: 1.155};
+        var K_14_NaK: per_fmol {init: 319.1183};
+        var K_15_NaK: per_fmol {init: 6250238.4012};
+        var K_1_NCX: per_fmol {init: 160144852.2746};
+        var K_1_NaK: per_fmol {init: 321178904.6865};
+        var K_200_Na: per_fmol {init: 9.9918e-08};
+        var K_201_Na: per_fmol {init: 0.32298};
+        var K_20_K: per_fmol {init: 8.5423};
+        var K_210_Na: per_fmol {init: 0.2383};
+        var K_211_Na: per_fmol {init: 770290.0911};
+        var K_21_K: per_fmol {init: 1.4805};
+        var K_2_NCX: per_fmol {init: 407.3479};
+        var K_2_NaK: per_fmol {init: 31093.1227};
+        var K_300_Na: per_fmol {init: 1.9159e-09};
+        var K_301_Na: per_fmol {init: 0.006193};
+        var K_310_Na: per_fmol {init: 0.0045694};
+        var K_311_Na: per_fmol {init: 14770.0739};
+        var K_3_NCX: per_fmol {init: 22191.7214};
+        var K_3_NaK: per_fmol {init: 12.0404};
+        var K_4_NCX: per_fmol {init: 119580.5289};
+        var K_4_NaK: per_fmol {init: 3.1105};
+        var K_5_NCX: per_fmol {init: 10363474.1803};
+        var K_5_NaK: per_fmol {init: 3.2141};
+        var K_6_NCX: per_fmol {init: 199.44};
+        var K_6_NaK: per_fmol {init: 170.6981};
+        var K_7_NaK: per_fmol {init: 10036.4321};
+        var K_8_NaK: per_fmol {init: 31550.6969};
+        var K_9_NaK: per_fmol {init: 9874266.4618};
+        var K_CMDN: per_fmol {init: 22.0647};
+        var K_CMDNCa: per_fmol {init: 0.044337};
+        var K_C_K1: per_fmol {init: 1.329};
+        var K_C_Kp: per_fmol {init: 41.6265};
+        var K_Cae: per_fmol {init: 0.16293};
+        var K_Cai: per_fmol {init: 0.022218};
+        var K_H: per_fmol {init: 0.060187};
+        var K_Ke: per_fmol {init: 0.059344};
+        var K_Ki: per_fmol {init: 0.0080926};
+        var K_MgADP: per_fmol {init: 7.1044e-05};
+        var K_MgATP: per_fmol {init: 3.6718};
+        var K_Nae: per_fmol {init: 0.017678};
+        var K_Nai: per_fmol {init: 0.0024108};
+        var K_O_K1: per_fmol {init: 15967.3543};
+        var K_O_Kp: per_fmol {init: 145.607};
+        var K_P: per_fmol {init: 0.060187};
+        var K_TRPN: per_fmol {init: 37.1165};
+        var K_TRPNCa: per_fmol {init: 0.015668};
+        var kappa_10_NaK: fmol_per_sec {init: 1045757.658};
+        var kappa_11_NaK: fmol_per_sec {init: 311526.5915};
+        var kappa_12_NaK: fmol_per_sec {init: 1873089.8475};
+        var kappa_13_NaK: fmol_per_sec {init: 168.3622};
+        var kappa_14_NaK: fmol_per_sec {init: 22.4585};
+        var kappa_15_NaK: fmol_per_sec {init: 0.0049006};
+        var kappa_1_NCX: fmol_per_sec {init: 256862.245};
+        var kappa_1_NaK: fmol_per_sec {init: 104.5833};
+        var kappa_2_NCX: fmol_per_sec {init: 21141816.1231};
+        var kappa_2_NaK: fmol_per_sec {init: 270075.4148};
+        var kappa_3_NCX: fmol_per_sec {init: 6834.2872};
+        var kappa_3_NaK: fmol_per_sec {init: 906610.9954};
+        var kappa_4_NCX: fmol_per_sec {init: 21141816.1231};
+        var kappa_4_NaK: fmol_per_sec {init: 3509448.0698};
+        var kappa_5_NCX: fmol_per_sec {init: 256862.245};
+        var kappa_5_NaK: fmol_per_sec {init: 5858.2952};
+        var kappa_6_NCX: fmol_per_sec {init: 1.7753};
+        var kappa_6_NaK: fmol_per_sec {init: 8.3375};
+        var kappa_7_NaK: fmol_per_sec {init: 1.1523};
+        var kappa_8_NaK: fmol_per_sec {init: 1.1055};
+        var kappa_9_NaK: fmol_per_sec {init: 2150.4256};
+        var kappa_K: fmol_per_sec {init: 43947.9368};
+        var kappa_K1: fmol_per_sec {init: 25.0154};
+        var kappa_Kp: fmol_per_sec {init: 252.3419};
+        var kappa_LCC_Ca1: fmol_per_sec {init: 31.5432};
+        var kappa_LCC_Ca2: fmol_per_sec {init: 58.9849};
+        var kappa_LCC_K1: fmol_per_sec {init: 0.068076};
+        var kappa_LCC_K2: fmol_per_sec {init: 0.1273};
+        var kappa_Na: fmol_per_sec {init: 32.858};
+        var kappa_X00: fmol_per_sec {init: 0.034684};
+        var kappa_X01: fmol_per_sec {init: 0.20012};
+        var kappa_X10: fmol_per_sec {init: 0.13462};
+        var kappa_X11: fmol_per_sec {init: 0.77675};
+        var kappa_b1: fmol_per_sec {init: 839.7697};
+        var kappa_b2: fmol_per_sec {init: 1412.6324};
+        var kappa_d000: fmol_per_sec {init: 369.4994};
+        var kappa_d001: fmol_per_sec {init: 0.31102};
+        var kappa_d010: fmol_per_sec {init: 9.1161};
+        var kappa_d011: fmol_per_sec {init: 0.0076733};
+        var kappa_d020: fmol_per_sec {init: 17.0469};
+        var kappa_d021: fmol_per_sec {init: 0.014349};
+        var kappa_f1_000: fmol_per_sec {init: 0.68071};
+        var kappa_f1_001: fmol_per_sec {init: 0.00057297};
+        var kappa_f1_100: fmol_per_sec {init: 3.3802};
+        var kappa_f1_101: fmol_per_sec {init: 0.0028452};
+        var kappa_f2_000: fmol_per_sec {init: 1.2467};
+        var kappa_f2_001: fmol_per_sec {init: 0.0010494};
+        var kappa_f2_100: fmol_per_sec {init: 6.1907};
+        var kappa_f2_101: fmol_per_sec {init: 0.0052109};
+        var kappa_f3_010: fmol_per_sec {init: 3502.1028};
+        var kappa_f3_011: fmol_per_sec {init: 2.9478};
+        var kappa_f3_110: fmol_per_sec {init: 17390.563};
+        var kappa_f3_111: fmol_per_sec {init: 14.6381};
+        var kappa_fCa00: fmol_per_sec {init: 106492.3187};
+        var kappa_fCa01: fmol_per_sec {init: 2627.333};
+        var kappa_fCa02: fmol_per_sec {init: 4913.0371};
+        var kappa_fCa10: fmol_per_sec {init: 528814.1044};
+        var kappa_fCa11: fmol_per_sec {init: 13046.6757};
+        var kappa_fCa12: fmol_per_sec {init: 24396.9083};
+        var kappa_gK1: fmol_per_sec {init: 848.2812};
+        var kappa_gKp: fmol_per_sec {init: 24.0195};
+        var kappa_h000: fmol_per_sec {init: 0.045709};
+        var kappa_h001: fmol_per_sec {init: 1.4141e-08};
+        var kappa_h100: fmol_per_sec {init: 21.4544};
+        var kappa_h101: fmol_per_sec {init: 6.6373e-06};
+        var kappa_h200: fmol_per_sec {init: 3356.675};
+        var kappa_h201: fmol_per_sec {init: 0.0010384};
+        var kappa_h300: fmol_per_sec {init: 175057.5863};
+        var kappa_h301: fmol_per_sec {init: 0.054157};
+        var kappa_i00: fmol_per_sec {init: 7.7389};
+        var kappa_i10: fmol_per_sec {init: 60.0742};
+        var kappa_i20: fmol_per_sec {init: 116.5836};
+        var kappa_j000: fmol_per_sec {init: 0.017824};
+        var kappa_j010: fmol_per_sec {init: 7.4736e-09};
+        var kappa_j100: fmol_per_sec {init: 8.3662};
+        var kappa_j110: fmol_per_sec {init: 3.5079e-06};
+        var kappa_j200: fmol_per_sec {init: 1308.9427};
+        var kappa_j210: fmol_per_sec {init: 0.00054883};
+        var kappa_j300: fmol_per_sec {init: 68264.0876};
+        var kappa_j310: fmol_per_sec {init: 0.028623};
+        var kappa_m000: fmol_per_sec {init: 5117405.6443};
+        var kappa_m001: fmol_per_sec {init: 1.5832};
+        var kappa_m010: fmol_per_sec {init: 2.1457};
+        var kappa_m011: fmol_per_sec {init: 6.6381e-07};
+        var kappa_m100: fmol_per_sec {init: 1601300127.6001};
+        var kappa_m101: fmol_per_sec {init: 495.389};
+        var kappa_m110: fmol_per_sec {init: 671.4132};
+        var kappa_m111: fmol_per_sec {init: 0.00020771};
+        var kappa_m200: fmol_per_sec {init: 125266701374.7363};
+        var kappa_m201: fmol_per_sec {init: 38753.3515};
+        var kappa_m210: fmol_per_sec {init: 52523.3901};
+        var kappa_m211: fmol_per_sec {init: 0.016249};
+        var nK: dimensionless {init: 0.5};
+        var nK_stim: dimensionless;
+        var nNae_NCX: dimensionless {init: 3};
+        var nNai_NCX: dimensionless {init: 3};
+        var zCa: dimensionless {init: 2};
+        var zF_5: C_per_mol {init: -5301.979};
+        var zF_8: C_per_mol {init: -91183.021};
+        var zK: dimensionless {init: 1};
+        var zNa: dimensionless {init: 1};
+        var z_fK1: dimensionless {init: 0.033569};
+        var z_fX: dimensionless {init: 0.51923};
+        var z_fXi: dimensionless {init: 0};
+        var z_f_Kp: dimensionless {init: 0};
+        var z_fd: dimensionless {init: 2.1404};
+        var z_ff1: dimensionless {init: -1.1495};
+        var z_ff2: dimensionless {init: 0.72162};
+        var z_ff3: dimensionless {init: 4.2933};
+        var z_fh: dimensionless {init: -4.1892};
+        var z_fj: dimensionless {init: -4.0381};
+        var z_fm: dimensionless {init: 0.49541};
+        var z_rCa: dimensionless {init: 2};
+        var z_rK1: dimensionless {init: 3.1153};
+        var z_rX: dimensionless {init: -0.73169};
+        var z_rXi: dimensionless {init: 0.83216};
+        var z_r_Kp: dimensionless {init: -4.4669};
+        var z_rd: dimensionless {init: -2.1404};
+        var z_rf1: dimensionless {init: 1.8993};
+        var z_rf2: dimensionless {init: -0.52288};
+        var z_rf3: dimensionless {init: 0};
+        var z_rh: dimensionless {init: 1.2995};
+        var z_rj: dimensionless {init: 1.4281};
+        var z_rm: dimensionless {init: -2.4284};
+        var zf_NCX: dimensionless {init: -0.55679};
+        var zr_NCX: dimensionless {init: 0.44321};
+        var I_stim: fA;
+        var stimPeriod: second {init: 1};
+        var stimDuration: second {init: 0.0001};
+        var tPeriod: second;
+        var x_Cae: fmol {init: 9.3276};
+        var x_Cai: fmol {init: 0.00456};
+        var x_Ke: fmol {init: 27.9828};
+        var x_Ki: fmol {init: 5510};
+        var x_Nae: fmol {init: 725.48};
+        var x_Nai: fmol {init: 380};
+        var q_mem: fC {init: -13039};
+        var x_CMDN: fmol {init: 1.8088};
+        var x_CMDNCa: fmol {init: 0.0912};
+        var x_TRPN: fmol {init: 2.1452};
+        var x_TRPNCa: fmol {init: 0.51484};
+        var x_P1_NCX: fmol {init: 0.00072174};
+        var x_P2_NCX: fmol {init: 0.00072174};
+        var x_P3_NCX: fmol {init: 0.00072174};
+        var x_P4_NCX: fmol {init: 0.00072174};
+        var x_P5_NCX: fmol {init: 0.00072174};
+        var x_P6_NCX: fmol {init: 0.00072174};
+        var x_H: fmol {init: 0.0030534};
+        var x_MgADP: fmol {init: 1.33};
+        var x_MgATP: fmol {init: 264.1};
+        var x_P7: fmol {init: 0.0078543};
+        var x_P_i: fmol {init: 15.0898};
+        var x_P14: fmol {init: 0.0078543};
+        var x_P15: fmol {init: 0.0078543};
+        var x_P1: fmol {init: 0.0078543};
+        var x_P2: fmol {init: 0.0078543};
+        var x_P3: fmol {init: 0.0078543};
+        var x_P4: fmol {init: 0.0078543};
+        var x_P5: fmol {init: 0.0078543};
+        var x_P6: fmol {init: 0.0078543};
+        var x_P10: fmol {init: 0.0078543};
+        var x_P11: fmol {init: 0.0078543};
+        var x_P12: fmol {init: 0.0078543};
+        var x_P13: fmol {init: 0.0078543};
+        var x_P8: fmol {init: 0.0078543};
+        var x_P9: fmol {init: 0.0078543};
+        var x_C_Kp: fmol {init: 9.6314e-07};
+        var x_O_Kp: fmol {init: 2.4078e-07};
+        var x_C_K1: fmol {init: 5.6606e-06};
+        var x_O_K1: fmol {init: 1.4151e-06};
+        var x_S00_K: fmol {init: 4.5648e-06};
+        var x_S01_K: fmol {init: 1.1412e-06};
+        var x_S10_K: fmol {init: 2.2824e-06};
+        var x_S11_K: fmol {init: 5.706e-07};
+        var x_S20_K: fmol {init: 2.853e-07};
+        var x_S21_K: fmol {init: 7.1325e-08};
+        var x_S000_LCC: fmol {init: 3.6989e-07};
+        var x_S010_LCC: fmol {init: 7.3239e-05};
+        var x_S020_LCC: fmol {init: 3.6989e-07};
+        var x_S100_LCC: fmol {init: 3.7363e-09};
+        var x_S110_LCC: fmol {init: 7.3979e-07};
+        var x_S120_LCC: fmol {init: 3.7363e-09};
+        var x_S001_LCC: fmol {init: 4.1099e-08};
+        var x_S011_LCC: fmol {init: 8.1377e-06};
+        var x_S021_LCC: fmol {init: 4.1099e-08};
+        var x_S101_LCC: fmol {init: 4.1514e-10};
+        var x_S111_LCC: fmol {init: 8.2199e-08};
+        var x_S121_LCC: fmol {init: 4.1514e-10};
+        var x_S000_Na: fmol {init: 0.00012033};
+        var x_S010_Na: fmol {init: 1.337e-05};
+        var x_S100_Na: fmol {init: 4.0111e-05};
+        var x_S110_Na: fmol {init: 4.4568e-06};
+        var x_S200_Na: fmol {init: 4.4568e-06};
+        var x_S210_Na: fmol {init: 4.952e-07};
+        var x_S300_Na: fmol {init: 1.6507e-07};
+        var x_S310_Na: fmol {init: 1.8341e-08};
+        var x_S001_Na: fmol {init: 1.337e-05};
+        var x_S011_Na: fmol {init: 1.4856e-06};
+        var x_S101_Na: fmol {init: 4.4568e-06};
+        var x_S111_Na: fmol {init: 4.952e-07};
+        var x_S201_Na: fmol {init: 4.952e-07};
+        var x_S211_Na: fmol {init: 5.5022e-08};
+        var x_S301_Na: fmol {init: 1.8341e-08};
+        var x_S311_Na: fmol {init: 2.0379e-09};
+        var mu_Cae: J_per_mol;
+        var v_Cae: fmol_per_sec;
+        var mu_Cai: J_per_mol;
+        var v_Cai: fmol_per_sec;
+        var mu_Ke: J_per_mol;
+        var v_Ke: fmol_per_sec;
+        var mu_Ki: J_per_mol;
+        var v_Ki: fmol_per_sec;
+        var mu_Nae: J_per_mol;
+        var v_Nae: fmol_per_sec;
+        var mu_Nai: J_per_mol;
+        var v_Nai: fmol_per_sec;
+        var V_mem: volt;
+        var I_mem: fA;
+        var mu_CMDN: J_per_mol;
+        var v_CMDN: fmol_per_sec;
+        var mu_CMDNCa: J_per_mol;
+        var v_CMDNCa: fmol_per_sec;
+        var mu_TRPN: J_per_mol;
+        var v_TRPN: fmol_per_sec;
+        var mu_TRPNCa: J_per_mol;
+        var v_TRPNCa: fmol_per_sec;
+        var Af_b1: J_per_mol;
+        var Ar_b1: J_per_mol;
+        var v_b1: fmol_per_sec;
+        var Af_b2: J_per_mol;
+        var Ar_b2: J_per_mol;
+        var v_b2: fmol_per_sec;
+        var mu_P1_NCX: J_per_mol;
+        var v_P1_NCX: fmol_per_sec;
+        var mu_P2_NCX: J_per_mol;
+        var v_P2_NCX: fmol_per_sec;
+        var mu_P3_NCX: J_per_mol;
+        var v_P3_NCX: fmol_per_sec;
+        var mu_P4_NCX: J_per_mol;
+        var v_P4_NCX: fmol_per_sec;
+        var mu_P5_NCX: J_per_mol;
+        var v_P5_NCX: fmol_per_sec;
+        var mu_P6_NCX: J_per_mol;
+        var v_P6_NCX: fmol_per_sec;
+        var Af_r1: J_per_mol;
+        var Ar_r1: J_per_mol;
+        var v_r1: fmol_per_sec;
+        var Af_r2: J_per_mol;
+        var Ar_r2: J_per_mol;
+        var v_r2: fmol_per_sec;
+        var Af_r3: J_per_mol;
+        var Ar_r3: J_per_mol;
+        var v_r3: fmol_per_sec;
+        var Af_r4: J_per_mol;
+        var Ar_r4: J_per_mol;
+        var v_r4: fmol_per_sec;
+        var Af_r5: J_per_mol;
+        var Ar_r5: J_per_mol;
+        var v_r5: fmol_per_sec;
+        var Af_r6: J_per_mol;
+        var Ar_r6: J_per_mol;
+        var v_r6: fmol_per_sec;
+        var mu_H: J_per_mol;
+        var v_H: fmol_per_sec;
+        var mu_MgADP: J_per_mol;
+        var v_MgADP: fmol_per_sec;
+        var mu_MgATP: J_per_mol;
+        var v_MgATP: fmol_per_sec;
+        var mu_P7: J_per_mol;
+        var v_P7: fmol_per_sec;
+        var mu_P_i: J_per_mol;
+        var v_P_i: fmol_per_sec;
+        var Af_R13: J_per_mol;
+        var Ar_R13: J_per_mol;
+        var v_R13: fmol_per_sec;
+        var Af_R15: J_per_mol;
+        var Ar_R15: J_per_mol;
+        var v_R15: fmol_per_sec;
+        var Af_R6: J_per_mol;
+        var Ar_R6: J_per_mol;
+        var v_R6: fmol_per_sec;
+        var Af_R7: J_per_mol;
+        var Ar_R7: J_per_mol;
+        var v_R7: fmol_per_sec;
+        var mu_P14: J_per_mol;
+        var v_P14: fmol_per_sec;
+        var mu_P15: J_per_mol;
+        var v_P15: fmol_per_sec;
+        var Af_R14: J_per_mol;
+        var Ar_R14: J_per_mol;
+        var v_R14: fmol_per_sec;
+        var mu_P1: J_per_mol;
+        var v_P1: fmol_per_sec;
+        var mu_P2: J_per_mol;
+        var v_P2: fmol_per_sec;
+        var mu_P3: J_per_mol;
+        var v_P3: fmol_per_sec;
+        var mu_P4: J_per_mol;
+        var v_P4: fmol_per_sec;
+        var mu_P5: J_per_mol;
+        var v_P5: fmol_per_sec;
+        var mu_P6: J_per_mol;
+        var v_P6: fmol_per_sec;
+        var Af_R1: J_per_mol;
+        var Ar_R1: J_per_mol;
+        var v_R1: fmol_per_sec;
+        var Af_R2: J_per_mol;
+        var Ar_R2: J_per_mol;
+        var v_R2: fmol_per_sec;
+        var Af_R3: J_per_mol;
+        var Ar_R3: J_per_mol;
+        var v_R3: fmol_per_sec;
+        var Af_R4: J_per_mol;
+        var Ar_R4: J_per_mol;
+        var v_R4: fmol_per_sec;
+        var Af_R5: J_per_mol;
+        var Ar_R5: J_per_mol;
+        var v_R5: fmol_per_sec;
+        var mu_P10: J_per_mol;
+        var v_P10: fmol_per_sec;
+        var mu_P11: J_per_mol;
+        var v_P11: fmol_per_sec;
+        var mu_P12: J_per_mol;
+        var v_P12: fmol_per_sec;
+        var mu_P13: J_per_mol;
+        var v_P13: fmol_per_sec;
+        var mu_P8: J_per_mol;
+        var v_P8: fmol_per_sec;
+        var mu_P9: J_per_mol;
+        var v_P9: fmol_per_sec;
+        var Af_R10: J_per_mol;
+        var Ar_R10: J_per_mol;
+        var v_R10: fmol_per_sec;
+        var Af_R11: J_per_mol;
+        var Ar_R11: J_per_mol;
+        var v_R11: fmol_per_sec;
+        var Af_R12: J_per_mol;
+        var Ar_R12: J_per_mol;
+        var v_R12: fmol_per_sec;
+        var Af_R8: J_per_mol;
+        var Ar_R8: J_per_mol;
+        var v_R8: fmol_per_sec;
+        var Af_R9: J_per_mol;
+        var Ar_R9: J_per_mol;
+        var v_R9: fmol_per_sec;
+        var Af_Na: J_per_mol;
+        var Ar_Na: J_per_mol;
+        var Am_Na: J_per_mol;
+        var v_Na: fmol_per_sec;
+        var Af_K: J_per_mol;
+        var Ar_K: J_per_mol;
+        var Am_K: J_per_mol;
+        var v_K: fmol_per_sec;
+        var Af_Kp: J_per_mol;
+        var Ar_Kp: J_per_mol;
+        var Am_Kp: J_per_mol;
+        var v_Kp: fmol_per_sec;
+        var mu_C_Kp: J_per_mol;
+        var v_C_Kp: fmol_per_sec;
+        var mu_O_Kp: J_per_mol;
+        var v_O_Kp: fmol_per_sec;
+        var Af_K1: J_per_mol;
+        var Ar_K1: J_per_mol;
+        var Am_K1: J_per_mol;
+        var v_K1: fmol_per_sec;
+        var mu_C_K1: J_per_mol;
+        var v_C_K1: fmol_per_sec;
+        var mu_O_K1: J_per_mol;
+        var v_O_K1: fmol_per_sec;
+        var Af_LCC_Ca1: J_per_mol;
+        var Ar_LCC_Ca1: J_per_mol;
+        var Am_LCC_Ca1: J_per_mol;
+        var v_LCC_Ca1: fmol_per_sec;
+        var Af_LCC_Ca2: J_per_mol;
+        var Ar_LCC_Ca2: J_per_mol;
+        var Am_LCC_Ca2: J_per_mol;
+        var v_LCC_Ca2: fmol_per_sec;
+        var Af_LCC_K1: J_per_mol;
+        var Ar_LCC_K1: J_per_mol;
+        var Am_LCC_K1: J_per_mol;
+        var v_LCC_K1: fmol_per_sec;
+        var Af_LCC_K2: J_per_mol;
+        var Ar_LCC_K2: J_per_mol;
+        var Am_LCC_K2: J_per_mol;
+        var v_LCC_K2: fmol_per_sec;
+        var mu_S00_K: J_per_mol;
+        var v_S00_K: fmol_per_sec;
+        var mu_S01_K: J_per_mol;
+        var v_S01_K: fmol_per_sec;
+        var mu_S10_K: J_per_mol;
+        var v_S10_K: fmol_per_sec;
+        var mu_S11_K: J_per_mol;
+        var v_S11_K: fmol_per_sec;
+        var mu_S20_K: J_per_mol;
+        var v_S20_K: fmol_per_sec;
+        var mu_S21_K: J_per_mol;
+        var v_S21_K: fmol_per_sec;
+        var Af_gKp: J_per_mol;
+        var Ar_gKp: J_per_mol;
+        var v_gKp: fmol_per_sec;
+        var Af_gK1: J_per_mol;
+        var Ar_gK1: J_per_mol;
+        var v_gK1: fmol_per_sec;
+        var Af_fCa00: J_per_mol;
+        var Ar_fCa00: J_per_mol;
+        var v_fCa00: fmol_per_sec;
+        var Af_fCa01: J_per_mol;
+        var Ar_fCa01: J_per_mol;
+        var v_fCa01: fmol_per_sec;
+        var Af_fCa02: J_per_mol;
+        var Ar_fCa02: J_per_mol;
+        var v_fCa02: fmol_per_sec;
+        var Af_fCa10: J_per_mol;
+        var Ar_fCa10: J_per_mol;
+        var v_fCa10: fmol_per_sec;
+        var Af_fCa11: J_per_mol;
+        var Ar_fCa11: J_per_mol;
+        var v_fCa11: fmol_per_sec;
+        var Af_fCa12: J_per_mol;
+        var Ar_fCa12: J_per_mol;
+        var v_fCa12: fmol_per_sec;
+        var mu_S000_LCC: J_per_mol;
+        var v_S000_LCC: fmol_per_sec;
+        var mu_S010_LCC: J_per_mol;
+        var v_S010_LCC: fmol_per_sec;
+        var mu_S020_LCC: J_per_mol;
+        var v_S020_LCC: fmol_per_sec;
+        var mu_S100_LCC: J_per_mol;
+        var v_S100_LCC: fmol_per_sec;
+        var mu_S110_LCC: J_per_mol;
+        var v_S110_LCC: fmol_per_sec;
+        var mu_S120_LCC: J_per_mol;
+        var v_S120_LCC: fmol_per_sec;
+        var mu_S001_LCC: J_per_mol;
+        var v_S001_LCC: fmol_per_sec;
+        var mu_S011_LCC: J_per_mol;
+        var v_S011_LCC: fmol_per_sec;
+        var mu_S021_LCC: J_per_mol;
+        var v_S021_LCC: fmol_per_sec;
+        var mu_S101_LCC: J_per_mol;
+        var v_S101_LCC: fmol_per_sec;
+        var mu_S111_LCC: J_per_mol;
+        var v_S111_LCC: fmol_per_sec;
+        var mu_S121_LCC: J_per_mol;
+        var v_S121_LCC: fmol_per_sec;
+        var mu_S000_Na: J_per_mol;
+        var v_S000_Na: fmol_per_sec;
+        var mu_S010_Na: J_per_mol;
+        var v_S010_Na: fmol_per_sec;
+        var mu_S100_Na: J_per_mol;
+        var v_S100_Na: fmol_per_sec;
+        var mu_S110_Na: J_per_mol;
+        var v_S110_Na: fmol_per_sec;
+        var mu_S200_Na: J_per_mol;
+        var v_S200_Na: fmol_per_sec;
+        var mu_S210_Na: J_per_mol;
+        var v_S210_Na: fmol_per_sec;
+        var mu_S300_Na: J_per_mol;
+        var v_S300_Na: fmol_per_sec;
+        var mu_S310_Na: J_per_mol;
+        var v_S310_Na: fmol_per_sec;
+        var mu_S001_Na: J_per_mol;
+        var v_S001_Na: fmol_per_sec;
+        var mu_S011_Na: J_per_mol;
+        var v_S011_Na: fmol_per_sec;
+        var mu_S101_Na: J_per_mol;
+        var v_S101_Na: fmol_per_sec;
+        var mu_S111_Na: J_per_mol;
+        var v_S111_Na: fmol_per_sec;
+        var mu_S201_Na: J_per_mol;
+        var v_S201_Na: fmol_per_sec;
+        var mu_S211_Na: J_per_mol;
+        var v_S211_Na: fmol_per_sec;
+        var mu_S301_Na: J_per_mol;
+        var v_S301_Na: fmol_per_sec;
+        var mu_S311_Na: J_per_mol;
+        var v_S311_Na: fmol_per_sec;
+        var Af_j000: J_per_mol;
+        var Ar_j000: J_per_mol;
+        var v_j000: fmol_per_sec;
+        var Af_j010: J_per_mol;
+        var Ar_j010: J_per_mol;
+        var v_j010: fmol_per_sec;
+        var Af_j100: J_per_mol;
+        var Ar_j100: J_per_mol;
+        var v_j100: fmol_per_sec;
+        var Af_j110: J_per_mol;
+        var Ar_j110: J_per_mol;
+        var v_j110: fmol_per_sec;
+        var Af_j200: J_per_mol;
+        var Ar_j200: J_per_mol;
+        var v_j200: fmol_per_sec;
+        var Af_j210: J_per_mol;
+        var Ar_j210: J_per_mol;
+        var v_j210: fmol_per_sec;
+        var Af_j300: J_per_mol;
+        var Ar_j300: J_per_mol;
+        var v_j300: fmol_per_sec;
+        var Af_j310: J_per_mol;
+        var Ar_j310: J_per_mol;
+        var v_j310: fmol_per_sec;
+        var Af_X00: J_per_mol;
+        var Ar_X00: J_per_mol;
+        var v_X00: fmol_per_sec;
+        var Af_X01: J_per_mol;
+        var Ar_X01: J_per_mol;
+        var v_X01: fmol_per_sec;
+        var Af_X10: J_per_mol;
+        var Ar_X10: J_per_mol;
+        var v_X10: fmol_per_sec;
+        var Af_X11: J_per_mol;
+        var Ar_X11: J_per_mol;
+        var v_X11: fmol_per_sec;
+        var Af_i00: J_per_mol;
+        var Ar_i00: J_per_mol;
+        var v_i00: fmol_per_sec;
+        var Af_i10: J_per_mol;
+        var Ar_i10: J_per_mol;
+        var v_i10: fmol_per_sec;
+        var Af_i20: J_per_mol;
+        var Ar_i20: J_per_mol;
+        var v_i20: fmol_per_sec;
+        var Af_d000: J_per_mol;
+        var Ar_d000: J_per_mol;
+        var v_d000: fmol_per_sec;
+        var Af_d010: J_per_mol;
+        var Ar_d010: J_per_mol;
+        var v_d010: fmol_per_sec;
+        var Af_d020: J_per_mol;
+        var Ar_d020: J_per_mol;
+        var v_d020: fmol_per_sec;
+        var Af_f1_000: J_per_mol;
+        var Ar_f1_000: J_per_mol;
+        var v_f1_000: fmol_per_sec;
+        var Af_f2_000: J_per_mol;
+        var Ar_f2_000: J_per_mol;
+        var v_f2_000: fmol_per_sec;
+        var Af_f3_010: J_per_mol;
+        var Ar_f3_010: J_per_mol;
+        var v_f3_010: fmol_per_sec;
+        var Af_f1_100: J_per_mol;
+        var Ar_f1_100: J_per_mol;
+        var v_f1_100: fmol_per_sec;
+        var Af_f2_100: J_per_mol;
+        var Ar_f2_100: J_per_mol;
+        var v_f2_100: fmol_per_sec;
+        var Af_f3_110: J_per_mol;
+        var Ar_f3_110: J_per_mol;
+        var v_f3_110: fmol_per_sec;
+        var Af_d001: J_per_mol;
+        var Ar_d001: J_per_mol;
+        var v_d001: fmol_per_sec;
+        var Af_d011: J_per_mol;
+        var Ar_d011: J_per_mol;
+        var v_d011: fmol_per_sec;
+        var Af_d021: J_per_mol;
+        var Ar_d021: J_per_mol;
+        var v_d021: fmol_per_sec;
+        var Af_f1_001: J_per_mol;
+        var Ar_f1_001: J_per_mol;
+        var v_f1_001: fmol_per_sec;
+        var Af_f2_001: J_per_mol;
+        var Ar_f2_001: J_per_mol;
+        var v_f2_001: fmol_per_sec;
+        var Af_f3_011: J_per_mol;
+        var Ar_f3_011: J_per_mol;
+        var v_f3_011: fmol_per_sec;
+        var Af_f1_101: J_per_mol;
+        var Ar_f1_101: J_per_mol;
+        var v_f1_101: fmol_per_sec;
+        var Af_f2_101: J_per_mol;
+        var Ar_f2_101: J_per_mol;
+        var v_f2_101: fmol_per_sec;
+        var Af_f3_111: J_per_mol;
+        var Ar_f3_111: J_per_mol;
+        var v_f3_111: fmol_per_sec;
+        var Af_h000: J_per_mol;
+        var Ar_h000: J_per_mol;
+        var v_h000: fmol_per_sec;
+        var Af_h100: J_per_mol;
+        var Ar_h100: J_per_mol;
+        var v_h100: fmol_per_sec;
+        var Af_h200: J_per_mol;
+        var Ar_h200: J_per_mol;
+        var v_h200: fmol_per_sec;
+        var Af_h300: J_per_mol;
+        var Ar_h300: J_per_mol;
+        var v_h300: fmol_per_sec;
+        var Af_m000: J_per_mol;
+        var Ar_m000: J_per_mol;
+        var v_m000: fmol_per_sec;
+        var Af_m100: J_per_mol;
+        var Ar_m100: J_per_mol;
+        var v_m100: fmol_per_sec;
+        var Af_m200: J_per_mol;
+        var Ar_m200: J_per_mol;
+        var v_m200: fmol_per_sec;
+        var Af_m010: J_per_mol;
+        var Ar_m010: J_per_mol;
+        var v_m010: fmol_per_sec;
+        var Af_m110: J_per_mol;
+        var Ar_m110: J_per_mol;
+        var v_m110: fmol_per_sec;
+        var Af_m210: J_per_mol;
+        var Ar_m210: J_per_mol;
+        var v_m210: fmol_per_sec;
+        var Af_h001: J_per_mol;
+        var Ar_h001: J_per_mol;
+        var v_h001: fmol_per_sec;
+        var Af_h101: J_per_mol;
+        var Ar_h101: J_per_mol;
+        var v_h101: fmol_per_sec;
+        var Af_h201: J_per_mol;
+        var Ar_h201: J_per_mol;
+        var v_h201: fmol_per_sec;
+        var Af_h301: J_per_mol;
+        var Ar_h301: J_per_mol;
+        var v_h301: fmol_per_sec;
+        var Af_m001: J_per_mol;
+        var Ar_m001: J_per_mol;
+        var v_m001: fmol_per_sec;
+        var Af_m101: J_per_mol;
+        var Ar_m101: J_per_mol;
+        var v_m101: fmol_per_sec;
+        var Af_m201: J_per_mol;
+        var Ar_m201: J_per_mol;
+        var v_m201: fmol_per_sec;
+        var Af_m011: J_per_mol;
+        var Ar_m011: J_per_mol;
+        var v_m011: fmol_per_sec;
+        var Af_m111: J_per_mol;
+        var Ar_m111: J_per_mol;
+        var v_m111: fmol_per_sec;
+        var Af_m211: J_per_mol;
+        var Ar_m211: J_per_mol;
+        var v_m211: fmol_per_sec;
+        V_mem = q_mem/C_m;
+        mu_CMDN = R*T*ln(K_CMDN*x_CMDN);
+        mu_CMDNCa = R*T*ln(K_CMDNCa*x_CMDNCa);
+        mu_C_K1 = R*T*ln(K_C_K1*x_C_K1);
+        mu_C_Kp = R*T*ln(K_C_Kp*x_C_Kp);
+        mu_Cae = R*T*ln(K_Cae*x_Cae);
+        mu_Cai = R*T*ln(K_Cai*x_Cai);
+        mu_H = R*T*ln(K_H*x_H);
+        mu_Ke = R*T*ln(K_Ke*x_Ke);
+        mu_Ki = R*T*ln(K_Ki*x_Ki);
+        mu_MgADP = R*T*ln(K_MgADP*x_MgADP);
+        mu_MgATP = R*T*ln(K_MgATP*x_MgATP);
+        mu_Nae = R*T*ln(K_Nae*x_Nae);
+        mu_Nai = R*T*ln(K_Nai*x_Nai);
+        mu_O_K1 = R*T*ln(K_O_K1*x_O_K1);
+        mu_O_Kp = R*T*ln(K_O_Kp*x_O_Kp);
+        mu_P1 = R*T*ln(K_1_NaK*x_P1);
+        mu_P10 = R*T*ln(K_10_NaK*x_P10);
+        mu_P11 = R*T*ln(K_11_NaK*x_P11);
+        mu_P12 = R*T*ln(K_12_NaK*x_P12);
+        mu_P13 = R*T*ln(K_13_NaK*x_P13);
+        mu_P14 = R*T*ln(K_14_NaK*x_P14);
+        mu_P15 = R*T*ln(K_15_NaK*x_P15);
+        mu_P1_NCX = R*T*ln(K_1_NCX*x_P1_NCX);
+        mu_P2 = R*T*ln(K_2_NaK*x_P2);
+        mu_P2_NCX = R*T*ln(K_2_NCX*x_P2_NCX);
+        mu_P3 = R*T*ln(K_3_NaK*x_P3);
+        mu_P3_NCX = R*T*ln(K_3_NCX*x_P3_NCX);
+        mu_P4 = R*T*ln(K_4_NaK*x_P4);
+        mu_P4_NCX = R*T*ln(K_4_NCX*x_P4_NCX);
+        mu_P5 = R*T*ln(K_5_NaK*x_P5);
+        mu_P5_NCX = R*T*ln(K_5_NCX*x_P5_NCX);
+        mu_P6 = R*T*ln(K_6_NaK*x_P6);
+        mu_P6_NCX = R*T*ln(K_6_NCX*x_P6_NCX);
+        mu_P7 = R*T*ln(K_7_NaK*x_P7);
+        mu_P8 = R*T*ln(K_8_NaK*x_P8);
+        mu_P9 = R*T*ln(K_9_NaK*x_P9);
+        mu_P_i = R*T*ln(K_P*x_P_i);
+        mu_S000_LCC = R*T*ln(K_000_LCC*x_S000_LCC);
+        mu_S000_Na = R*T*ln(K_000_Na*x_S000_Na);
+        mu_S001_LCC = R*T*ln(K_001_LCC*x_S001_LCC);
+        mu_S001_Na = R*T*ln(K_001_Na*x_S001_Na);
+        mu_S00_K = R*T*ln(K_00_K*x_S00_K);
+        mu_S010_LCC = R*T*ln(K_010_LCC*x_S010_LCC);
+        mu_S010_Na = R*T*ln(K_010_Na*x_S010_Na);
+        mu_S011_LCC = R*T*ln(K_011_LCC*x_S011_LCC);
+        mu_S011_Na = R*T*ln(K_011_Na*x_S011_Na);
+        mu_S01_K = R*T*ln(K_01_K*x_S01_K);
+        mu_S020_LCC = R*T*ln(K_020_LCC*x_S020_LCC);
+        mu_S021_LCC = R*T*ln(K_021_LCC*x_S021_LCC);
+        mu_S100_LCC = R*T*ln(K_100_LCC*x_S100_LCC);
+        mu_S100_Na = R*T*ln(K_100_Na*x_S100_Na);
+        mu_S101_LCC = R*T*ln(K_101_LCC*x_S101_LCC);
+        mu_S101_Na = R*T*ln(K_101_Na*x_S101_Na);
+        mu_S10_K = R*T*ln(K_10_K*x_S10_K);
+        mu_S110_LCC = R*T*ln(K_110_LCC*x_S110_LCC);
+        mu_S110_Na = R*T*ln(K_110_Na*x_S110_Na);
+        mu_S111_LCC = R*T*ln(K_111_LCC*x_S111_LCC);
+        mu_S111_Na = R*T*ln(K_111_Na*x_S111_Na);
+        mu_S11_K = R*T*ln(K_11_K*x_S11_K);
+        mu_S120_LCC = R*T*ln(K_120_LCC*x_S120_LCC);
+        mu_S121_LCC = R*T*ln(K_121_LCC*x_S121_LCC);
+        mu_S200_Na = R*T*ln(K_200_Na*x_S200_Na);
+        mu_S201_Na = R*T*ln(K_201_Na*x_S201_Na);
+        mu_S20_K = R*T*ln(K_20_K*x_S20_K);
+        mu_S210_Na = R*T*ln(K_210_Na*x_S210_Na);
+        mu_S211_Na = R*T*ln(K_211_Na*x_S211_Na);
+        mu_S21_K = R*T*ln(K_21_K*x_S21_K);
+        mu_S300_Na = R*T*ln(K_300_Na*x_S300_Na);
+        mu_S301_Na = R*T*ln(K_301_Na*x_S301_Na);
+        mu_S310_Na = R*T*ln(K_310_Na*x_S310_Na);
+        mu_S311_Na = R*T*ln(K_311_Na*x_S311_Na);
+        mu_TRPN = R*T*ln(K_TRPN*x_TRPN);
+        mu_TRPNCa = R*T*ln(K_TRPNCa*x_TRPNCa);
+        nK_stim = F;
+        tPeriod = t-floor(t/stimPeriod)*stimPeriod;
+        v_R1 = kappa_1_NaK*(exp(Af_R1/(R*T))-exp(Ar_R1/(R*T)));
+        v_R10 = kappa_10_NaK*(exp(Af_R10/(R*T))-exp(Ar_R10/(R*T)));
+        v_R11 = kappa_11_NaK*(exp(Af_R11/(R*T))-exp(Ar_R11/(R*T)));
+        v_R12 = kappa_12_NaK*(exp(Af_R12/(R*T))-exp(Ar_R12/(R*T)));
+        v_R13 = kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)));
+        v_R14 = kappa_14_NaK*(exp(Af_R14/(R*T))-exp(Ar_R14/(R*T)));
+        v_R15 = kappa_15_NaK*(exp(Af_R15/(R*T))-exp(Ar_R15/(R*T)));
+        v_R2 = kappa_2_NaK*(exp(Af_R2/(R*T))-exp(Ar_R2/(R*T)));
+        v_R3 = kappa_3_NaK*(exp(Af_R3/(R*T))-exp(Ar_R3/(R*T)));
+        v_R4 = kappa_4_NaK*(exp(Af_R4/(R*T))-exp(Ar_R4/(R*T)));
+        v_R5 = kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T)));
+        v_R6 = kappa_6_NaK*(exp(Af_R6/(R*T))-exp(Ar_R6/(R*T)));
+        v_R7 = kappa_7_NaK*(exp(Af_R7/(R*T))-exp(Ar_R7/(R*T)));
+        v_R8 = kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T)));
+        v_R9 = kappa_9_NaK*(exp(Af_R9/(R*T))-exp(Ar_R9/(R*T)));
+        v_X00 = kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T)));
+        v_X01 = kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T)));
+        v_X10 = kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T)));
+        v_X11 = kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T)));
+        v_b1 = kappa_b1*(exp(Af_b1/(R*T))-exp(Ar_b1/(R*T)));
+        v_b2 = kappa_b2*(exp(Af_b2/(R*T))-exp(Ar_b2/(R*T)));
+        v_d000 = kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T)));
+        v_d001 = kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T)));
+        v_d010 = kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T)));
+        v_d011 = kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T)));
+        v_d020 = kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T)));
+        v_d021 = kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T)));
+        v_f1_000 = kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T)));
+        v_f1_001 = kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T)));
+        v_f1_100 = kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T)));
+        v_f1_101 = kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T)));
+        v_f2_000 = kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T)));
+        v_f2_001 = kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T)));
+        v_f2_100 = kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T)));
+        v_f2_101 = kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T)));
+        v_f3_010 = kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T)));
+        v_f3_011 = kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T)));
+        v_f3_110 = kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T)));
+        v_f3_111 = kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T)));
+        v_fCa00 = kappa_fCa00*(exp(Af_fCa00/(R*T))-exp(Ar_fCa00/(R*T)));
+        v_fCa01 = kappa_fCa01*(exp(Af_fCa01/(R*T))-exp(Ar_fCa01/(R*T)));
+        v_fCa02 = kappa_fCa02*(exp(Af_fCa02/(R*T))-exp(Ar_fCa02/(R*T)));
+        v_fCa10 = kappa_fCa10*(exp(Af_fCa10/(R*T))-exp(Ar_fCa10/(R*T)));
+        v_fCa11 = kappa_fCa11*(exp(Af_fCa11/(R*T))-exp(Ar_fCa11/(R*T)));
+        v_fCa12 = kappa_fCa12*(exp(Af_fCa12/(R*T))-exp(Ar_fCa12/(R*T)));
+        v_gK1 = kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T)));
+        v_gKp = kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T)));
+        v_h000 = kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T)));
+        v_h001 = kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T)));
+        v_h100 = kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T)));
+        v_h101 = kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T)));
+        v_h200 = kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T)));
+        v_h201 = kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T)));
+        v_h300 = kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T)));
+        v_h301 = kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T)));
+        v_i00 = kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T)));
+        v_i10 = kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T)));
+        v_i20 = kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T)));
+        v_j000 = kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T)));
+        v_j010 = kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T)));
+        v_j100 = kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T)));
+        v_j110 = kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T)));
+        v_j200 = kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T)));
+        v_j210 = kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T)));
+        v_j300 = kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T)));
+        v_j310 = kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T)));
+        v_m000 = kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T)));
+        v_m001 = kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T)));
+        v_m010 = kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T)));
+        v_m011 = kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T)));
+        v_m100 = kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T)));
+        v_m101 = kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T)));
+        v_m110 = kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T)));
+        v_m111 = kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T)));
+        v_m200 = kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T)));
+        v_m201 = kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T)));
+        v_m210 = kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T)));
+        v_m211 = kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T)));
+        v_r1 = kappa_1_NCX*(exp(Af_r1/(R*T))-exp(Ar_r1/(R*T)));
+        v_r2 = kappa_2_NCX*(exp(Af_r2/(R*T))-exp(Ar_r2/(R*T)));
+        v_r3 = kappa_3_NCX*(exp(Af_r3/(R*T))-exp(Ar_r3/(R*T)));
+        v_r4 = kappa_4_NCX*(exp(Af_r4/(R*T))-exp(Ar_r4/(R*T)));
+        v_r5 = kappa_5_NCX*(exp(Af_r5/(R*T))-exp(Ar_r5/(R*T)));
+        v_r6 = kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T)));
+Af_K = mu_Ki+(zK*((F*V_mem)))+mu_S21_K+(nK*mu_Ke);
+Af_K1 = mu_Ki+(zK*((F*V_mem)))+mu_O_K1+(nK*mu_Ke);
+Af_Kp = mu_Ki+(zK*((F*V_mem)))+mu_O_Kp;
+Af_LCC_Ca1 = mu_Cai+(zCa*((F*V_mem)))+mu_S111_LCC;
+Af_LCC_Ca2 = mu_Cai+(zCa*((F*V_mem)))+mu_S121_LCC;
+Af_LCC_K1 = mu_Ki+(zK*((F*V_mem)))+mu_S111_LCC;
+Af_LCC_K2 = mu_Ki+(zK*((F*V_mem)))+mu_S121_LCC;
+Af_Na = mu_Nai+(zNa*((F*V_mem)))+mu_S311_Na;
+Af_R1 = mu_P1;
+Af_R10 = mu_P10;
+Af_R11 = mu_P11+mu_Ke;
+Af_R12 = mu_P12+mu_Ke;
+Af_R13 = mu_P13;
+Af_R14 = mu_P14+mu_MgATP;
+Af_R15 = mu_P15;
+Af_R2 = mu_P2;
+Af_R3 = mu_P3+mu_Nai;
+Af_R4 = mu_P4+mu_Nai;
+Af_R5 = mu_P5+mu_Nai;
+Af_R6 = mu_P6;
+Af_R7 = mu_P7;
+Af_R8 = mu_P8;
+Af_R9 = mu_P9;
+Af_X00 = R*T*ln(K_00_K*x_S00_K)+z_fX*(F*V_mem);
+Af_X01 = R*T*ln(K_01_K*x_S01_K)+z_fX*(F*V_mem);
+Af_X10 = R*T*ln(K_10_K*x_S10_K)+z_fX*(F*V_mem);
+Af_X11 = R*T*ln(K_11_K*x_S11_K)+z_fX*(F*V_mem);
+Af_b1 = mu_Cai+mu_TRPN;
+Af_b2 = mu_Cai+mu_CMDN;
+Af_d000 = R*T*ln(K_000_LCC*x_S000_LCC)+z_fd*(F*V_mem);
+Af_d001 = R*T*ln(K_001_LCC*x_S001_LCC)+z_fd*(F*V_mem);
+Af_d010 = R*T*ln(K_010_LCC*x_S010_LCC)+z_fd*(F*V_mem);
+Af_d011 = R*T*ln(K_011_LCC*x_S011_LCC)+z_fd*(F*V_mem);
+Af_d020 = R*T*ln(K_020_LCC*x_S020_LCC)+z_fd*(F*V_mem);
+Af_d021 = R*T*ln(K_021_LCC*x_S021_LCC)+z_fd*(F*V_mem);
+Af_f1_000 = R*T*ln(K_000_LCC*x_S000_LCC)+z_ff1*(F*V_mem);
+Af_f1_001 = R*T*ln(K_001_LCC*x_S001_LCC)+z_ff1*(F*V_mem);
+Af_f1_100 = R*T*ln(K_100_LCC*x_S100_LCC)+z_ff1*(F*V_mem);
+Af_f1_101 = R*T*ln(K_101_LCC*x_S101_LCC)+z_ff1*(F*V_mem);
+Af_f2_000 = R*T*ln(K_000_LCC*x_S000_LCC)+z_ff2*(F*V_mem);
+Af_f2_001 = R*T*ln(K_001_LCC*x_S001_LCC)+z_ff2*(F*V_mem);
+Af_f2_100 = R*T*ln(K_100_LCC*x_S100_LCC)+z_ff2*(F*V_mem);
+Af_f2_101 = R*T*ln(K_101_LCC*x_S101_LCC)+z_ff2*(F*V_mem);
+Af_f3_010 = R*T*ln(K_010_LCC*x_S010_LCC)+z_ff3*(F*V_mem);
+Af_f3_011 = R*T*ln(K_011_LCC*x_S011_LCC)+z_ff3*(F*V_mem);
+Af_f3_110 = R*T*ln(K_110_LCC*x_S110_LCC)+z_ff3*(F*V_mem);
+Af_f3_111 = R*T*ln(K_111_LCC*x_S111_LCC)+z_ff3*(F*V_mem);
+Af_fCa00 = mu_S000_LCC;
+Af_fCa01 = mu_S010_LCC;
+Af_fCa02 = mu_S020_LCC;
+Af_fCa10 = mu_S100_LCC;
+Af_fCa11 = mu_S110_LCC;
+Af_fCa12 = mu_S120_LCC;
+Af_gK1 = R*T*ln(K_C_K1*x_C_K1)+z_fK1*(F*V_mem);
+Af_gKp = R*T*ln(K_C_Kp*x_C_Kp)+z_f_Kp*(F*V_mem);
+Af_h000 = R*T*ln(K_000_Na*x_S000_Na)+z_fh*(F*V_mem);
+Af_h001 = R*T*ln(K_001_Na*x_S001_Na)+z_fh*(F*V_mem);
+Af_h100 = R*T*ln(K_100_Na*x_S100_Na)+z_fh*(F*V_mem);
+Af_h101 = R*T*ln(K_101_Na*x_S101_Na)+z_fh*(F*V_mem);
+Af_h200 = R*T*ln(K_200_Na*x_S200_Na)+z_fh*(F*V_mem);
+Af_h201 = R*T*ln(K_201_Na*x_S201_Na)+z_fh*(F*V_mem);
+Af_h300 = R*T*ln(K_300_Na*x_S300_Na)+z_fh*(F*V_mem);
+Af_h301 = R*T*ln(K_301_Na*x_S301_Na)+z_fh*(F*V_mem);
+Af_i00 = R*T*ln(K_00_K*x_S00_K)+z_fXi*(F*V_mem);
+Af_i10 = R*T*ln(K_10_K*x_S10_K)+z_fXi*(F*V_mem);
+Af_i20 = R*T*ln(K_20_K*x_S20_K)+z_fXi*(F*V_mem);
+Af_j000 = R*T*ln(K_000_Na*x_S000_Na)+z_fj*(F*V_mem);
+Af_j010 = R*T*ln(K_010_Na*x_S010_Na)+z_fj*(F*V_mem);
+Af_j100 = R*T*ln(K_100_Na*x_S100_Na)+z_fj*(F*V_mem);
+Af_j110 = R*T*ln(K_110_Na*x_S110_Na)+z_fj*(F*V_mem);
+Af_j200 = R*T*ln(K_200_Na*x_S200_Na)+z_fj*(F*V_mem);
+Af_j210 = R*T*ln(K_210_Na*x_S210_Na)+z_fj*(F*V_mem);
+Af_j300 = R*T*ln(K_300_Na*x_S300_Na)+z_fj*(F*V_mem);
+Af_j310 = R*T*ln(K_310_Na*x_S310_Na)+z_fj*(F*V_mem);
+Af_m000 = R*T*ln(K_000_Na*x_S000_Na)+z_fm*(F*V_mem);
+Af_m001 = R*T*ln(K_001_Na*x_S001_Na)+z_fm*(F*V_mem);
+Af_m010 = R*T*ln(K_010_Na*x_S010_Na)+z_fm*(F*V_mem);
+Af_m011 = R*T*ln(K_011_Na*x_S011_Na)+z_fm*(F*V_mem);
+Af_m100 = R*T*ln(K_100_Na*x_S100_Na)+z_fm*(F*V_mem);
+Af_m101 = R*T*ln(K_101_Na*x_S101_Na)+z_fm*(F*V_mem);
+Af_m110 = R*T*ln(K_110_Na*x_S110_Na)+z_fm*(F*V_mem);
+Af_m111 = R*T*ln(K_111_Na*x_S111_Na)+z_fm*(F*V_mem);
+Af_m200 = R*T*ln(K_200_Na*x_S200_Na)+z_fm*(F*V_mem);
+Af_m201 = R*T*ln(K_201_Na*x_S201_Na)+z_fm*(F*V_mem);
+Af_m210 = R*T*ln(K_210_Na*x_S210_Na)+z_fm*(F*V_mem);
+Af_m211 = R*T*ln(K_211_Na*x_S211_Na)+z_fm*(F*V_mem);
+Af_r1 = mu_P1_NCX;
+Af_r2 = mu_P2_NCX+mu_Cai;
+Af_r3 = mu_P3_NCX;
+Af_r4 = mu_P4_NCX;
+Af_r5 = mu_P5_NCX+(nNae_NCX*mu_Nae);
+Af_r6 = R*T*ln(K_6_NCX*x_P6_NCX)+zf_NCX*(F*V_mem);
+Am_K = (zK*((F*V_mem)));
+Am_K1 = (zK*((F*V_mem)));
+Am_Kp = (zK*((F*V_mem)));
+Am_LCC_Ca1 = (zCa*((F*V_mem)));
+Am_LCC_Ca2 = (zCa*((F*V_mem)));
+Am_LCC_K1 = (zK*((F*V_mem)));
+Am_LCC_K2 = (zK*((F*V_mem)));
+Am_Na = (zNa*((F*V_mem)));
+Ar_K = mu_Ke+mu_S21_K+(nK*mu_Ke);
+Ar_K1 = mu_Ke+mu_O_K1+(nK*mu_Ke);
+Ar_Kp = mu_Ke+mu_O_Kp;
+Ar_LCC_Ca1 = mu_Cae+mu_S111_LCC;
+Ar_LCC_Ca2 = mu_Cae+mu_S121_LCC;
+Ar_LCC_K1 = mu_Ke+mu_S111_LCC;
+Ar_LCC_K2 = mu_Ke+mu_S121_LCC;
+Ar_Na = mu_Nae+mu_S311_Na;
+Ar_R1 = mu_Ki+mu_P2;
+Ar_R10 = mu_Nae+mu_P11;
+Ar_R11 = mu_P12;
+Ar_R12 = mu_P13;
+Ar_R13 = mu_H+mu_P_i+mu_P14;
+Ar_R14 = mu_P15;
+Ar_R15 = mu_P1;
+Ar_R2 = mu_P3+mu_Ki;
+Ar_R3 = mu_P4;
+Ar_R4 = mu_P5;
+Ar_R5 = R*T*ln(K_6_NaK*x_P6)+zF_5*V_mem;
+Ar_R6 = mu_P7+mu_MgADP;
+Ar_R7 = mu_P8;
+Ar_R8 = zF_8*V_mem+R*T*ln(K_Nae*x_Nae)+R*T*ln(K_9_NaK*x_P9);
+Ar_R9 = mu_P10+mu_Nae;
+Ar_X00 = R*T*ln(K_10_K*x_S10_K)+z_rX*(F*V_mem);
+Ar_X01 = R*T*ln(K_11_K*x_S11_K)+z_rX*(F*V_mem);
+Ar_X10 = R*T*ln(K_20_K*x_S20_K)+z_rX*(F*V_mem);
+Ar_X11 = R*T*ln(K_21_K*x_S21_K)+z_rX*(F*V_mem);
+Ar_b1 = mu_TRPNCa;
+Ar_b2 = mu_CMDNCa;
+Ar_d000 = R*T*ln(K_100_LCC*x_S100_LCC)+z_rd*(F*V_mem);
+Ar_d001 = R*T*ln(K_101_LCC*x_S101_LCC)+z_rd*(F*V_mem);
+Ar_d010 = R*T*ln(K_110_LCC*x_S110_LCC)+z_rd*(F*V_mem);
+Ar_d011 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rd*(F*V_mem);
+Ar_d020 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rd*(F*V_mem);
+Ar_d021 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rd*(F*V_mem);
+Ar_f1_000 = R*T*ln(K_010_LCC*x_S010_LCC)+z_rf1*(F*V_mem);
+Ar_f1_001 = R*T*ln(K_011_LCC*x_S011_LCC)+z_rf1*(F*V_mem);
+Ar_f1_100 = R*T*ln(K_110_LCC*x_S110_LCC)+z_rf1*(F*V_mem);
+Ar_f1_101 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rf1*(F*V_mem);
+Ar_f2_000 = R*T*ln(K_020_LCC*x_S020_LCC)+z_rf2*(F*V_mem);
+Ar_f2_001 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rf2*(F*V_mem);
+Ar_f2_100 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rf2*(F*V_mem);
+Ar_f2_101 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rf2*(F*V_mem);
+Ar_f3_010 = R*T*ln(K_020_LCC*x_S020_LCC)+z_rf3*(F*V_mem);
+Ar_f3_011 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rf3*(F*V_mem);
+Ar_f3_110 = R*T*ln(K_120_LCC*x_S120_LCC)+z_rf3*(F*V_mem);
+Ar_f3_111 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rf3*(F*V_mem);
+Ar_fCa00 = R*T*ln(K_001_LCC*x_S001_LCC)+z_rCa*mu_Cai;
+Ar_fCa01 = R*T*ln(K_011_LCC*x_S011_LCC)+z_rCa*mu_Cai;
+Ar_fCa02 = R*T*ln(K_021_LCC*x_S021_LCC)+z_rCa*mu_Cai;
+Ar_fCa10 = R*T*ln(K_101_LCC*x_S101_LCC)+z_rCa*mu_Cai;
+Ar_fCa11 = R*T*ln(K_111_LCC*x_S111_LCC)+z_rCa*mu_Cai;
+Ar_fCa12 = R*T*ln(K_121_LCC*x_S121_LCC)+z_rCa*mu_Cai;
+Ar_gK1 = R*T*ln(K_O_K1*x_O_K1)+z_rK1*(F*V_mem);
+Ar_gKp = R*T*ln(K_O_Kp*x_O_Kp)+z_r_Kp*(F*V_mem);
+Ar_h000 = R*T*ln(K_010_Na*x_S010_Na)+z_rh*(F*V_mem);
+Ar_h001 = R*T*ln(K_011_Na*x_S011_Na)+z_rh*(F*V_mem);
+Ar_h100 = R*T*ln(K_110_Na*x_S110_Na)+z_rh*(F*V_mem);
+Ar_h101 = R*T*ln(K_111_Na*x_S111_Na)+z_rh*(F*V_mem);
+Ar_h200 = R*T*ln(K_210_Na*x_S210_Na)+z_rh*(F*V_mem);
+Ar_h201 = R*T*ln(K_211_Na*x_S211_Na)+z_rh*(F*V_mem);
+Ar_h300 = R*T*ln(K_310_Na*x_S310_Na)+z_rh*(F*V_mem);
+Ar_h301 = R*T*ln(K_311_Na*x_S311_Na)+z_rh*(F*V_mem);
+Ar_i00 = R*T*ln(K_01_K*x_S01_K)+z_rXi*(F*V_mem);
+Ar_i10 = R*T*ln(K_11_K*x_S11_K)+z_rXi*(F*V_mem);
+Ar_i20 = R*T*ln(K_21_K*x_S21_K)+z_rXi*(F*V_mem);
+Ar_j000 = R*T*ln(K_001_Na*x_S001_Na)+z_rj*(F*V_mem);
+Ar_j010 = R*T*ln(K_011_Na*x_S011_Na)+z_rj*(F*V_mem);
+Ar_j100 = R*T*ln(K_101_Na*x_S101_Na)+z_rj*(F*V_mem);
+Ar_j110 = R*T*ln(K_111_Na*x_S111_Na)+z_rj*(F*V_mem);
+Ar_j200 = R*T*ln(K_201_Na*x_S201_Na)+z_rj*(F*V_mem);
+Ar_j210 = R*T*ln(K_211_Na*x_S211_Na)+z_rj*(F*V_mem);
+Ar_j300 = R*T*ln(K_301_Na*x_S301_Na)+z_rj*(F*V_mem);
+Ar_j310 = R*T*ln(K_311_Na*x_S311_Na)+z_rj*(F*V_mem);
+Ar_m000 = R*T*ln(K_100_Na*x_S100_Na)+z_rm*(F*V_mem);
+Ar_m001 = R*T*ln(K_101_Na*x_S101_Na)+z_rm*(F*V_mem);
+Ar_m010 = R*T*ln(K_110_Na*x_S110_Na)+z_rm*(F*V_mem);
+Ar_m011 = R*T*ln(K_111_Na*x_S111_Na)+z_rm*(F*V_mem);
+Ar_m100 = R*T*ln(K_200_Na*x_S200_Na)+z_rm*(F*V_mem);
+Ar_m101 = R*T*ln(K_201_Na*x_S201_Na)+z_rm*(F*V_mem);
+Ar_m110 = R*T*ln(K_210_Na*x_S210_Na)+z_rm*(F*V_mem);
+Ar_m111 = R*T*ln(K_211_Na*x_S211_Na)+z_rm*(F*V_mem);
+Ar_m200 = R*T*ln(K_300_Na*x_S300_Na)+z_rm*(F*V_mem);
+Ar_m201 = R*T*ln(K_301_Na*x_S301_Na)+z_rm*(F*V_mem);
+Ar_m210 = R*T*ln(K_310_Na*x_S310_Na)+z_rm*(F*V_mem);
+Ar_m211 = R*T*ln(K_311_Na*x_S311_Na)+z_rm*(F*V_mem);
+Ar_r1 = (nNai_NCX*mu_Nai)+mu_P2_NCX;
+Ar_r2 = mu_P3_NCX;
+Ar_r3 = mu_P4_NCX;
+Ar_r4 = mu_P5_NCX+mu_Cae;
+Ar_r5 = mu_P6_NCX;
+Ar_r6 = R*T*ln(K_1_NCX*x_P1_NCX)+zr_NCX*(F*V_mem);
+I_mem = (F*(-(zNa*(v_Na))+(z_rm*v_m000)-(z_fm*v_m000)+(z_rm*v_m100)-(z_fm*v_m100)+(z_rm*v_m010)-(z_fm*v_m010)+(z_rm*v_m110)-(z_fm*v_m110)+(z_rm*v_m210)-(z_fm*v_m210)+(z_rh*v_h000)-(z_fh*v_h000)+(z_rh*v_h200)-(z_fh*v_h200)+(z_rj*v_j100)-(z_fj*v_j100)+(z_rj*v_j200)-(z_fj*v_j200)+(z_rj*v_j300)-(z_fj*v_j300)+(z_rm*v_m200)-(z_fm*v_m200)+(z_rh*v_h100)-(z_fh*v_h100)+(z_rh*v_h300)-(z_fh*v_h300)+(z_rj*v_j000)-(z_fj*v_j000)+(z_rm*v_m001)-(z_fm*v_m001)+(z_rm*v_m101)-(z_fm*v_m101)+(z_rm*v_m011)-(z_fm*v_m011)+(z_rm*v_m111)-(z_fm*v_m111)+(z_rm*v_m211)-(z_fm*v_m211)+(z_rh*v_h001)-(z_fh*v_h001)+(z_rh*v_h201)-(z_fh*v_h201)+(z_rj*v_j010)-(z_fj*v_j010)+(z_rj*v_j110)-(z_fj*v_j110)+(z_rj*v_j210)-(z_fj*v_j210)+(z_rj*v_j310)-(z_fj*v_j310)+(z_rm*v_m201)-(z_fm*v_m201)+(z_rh*v_h101)-(z_fh*v_h101)+(z_rh*v_h301)-(z_fh*v_h301)))+(F*(-(zK*(v_K1))+(z_rK1*v_gK1)-(z_fK1*v_gK1)))+(F*(-(zK*(v_K))+(z_rXi*v_i10)-(z_fXi*v_i10)+(z_rXi*v_i00)-(z_fXi*v_i00)+(z_rX*v_X10)-(z_fX*v_X10)+(z_rX*v_X00)-(z_fX*v_X00)+(z_rXi*v_i20)-(z_fXi*v_i20)+(z_rX*v_X11)-(z_fX*v_X11)+(z_rX*v_X01)-(z_fX*v_X01)))+(F*(-(zK*(v_Kp))+(z_r_Kp*v_gKp)-(z_f_Kp*v_gKp)))+(F*((z_rf2*v_f2_001)-(z_ff2*v_f2_001)+(z_rf3*v_f3_011)-(z_ff3*v_f3_011)+(z_rf1*v_f1_101)-(z_ff1*v_f1_101)+(z_rf2*v_f2_101)-(z_ff2*v_f2_101)+(z_rf3*v_f3_111)-(z_ff3*v_f3_111)+(z_rf1*v_f1_001)-(z_ff1*v_f1_001)+(z_rd*v_d021)-(z_fd*v_d021)+(z_rd*v_d011)-(z_fd*v_d011)+(z_rd*v_d001)-(z_fd*v_d001)+(z_rf3*v_f3_110)-(z_ff3*v_f3_110)+(z_rf2*v_f2_100)-(z_ff2*v_f2_100)+(z_rf1*v_f1_100)-(z_ff1*v_f1_100)+(z_rf3*v_f3_010)-(z_ff3*v_f3_010)+(z_rf2*v_f2_000)-(z_ff2*v_f2_000)+(z_rf1*v_f1_000)-(z_ff1*v_f1_000)+(z_rd*v_d020)-(z_fd*v_d020)+(z_rd*v_d010)-(z_fd*v_d010)+(z_rd*v_d000)-(z_fd*v_d000)-(zCa*(v_LCC_Ca1))+(zCa*(v_LCC_Ca2))-(zK*(v_LCC_K1))+(zK*(v_LCC_K2))))+(zF_8*v_R8)+(zF_5*v_R5)+(F*(-(zf_NCX*v_r6)+(zr_NCX*v_r6)))+I_stim;
+v_CMDN = -v_b2;
+v_CMDNCa = v_b2;
+v_C_K1 = -v_gK1;
+v_C_Kp = -v_gKp;
+v_Cae = v_r4+v_LCC_Ca2+v_LCC_Ca1;
+v_Cai = -v_r2+(z_rCa*v_fCa10)+(z_rCa*v_fCa11)+(z_rCa*v_fCa02)+(z_rCa*v_fCa01)+(z_rCa*v_fCa00)+(z_rCa*v_fCa12)-v_LCC_Ca1-v_LCC_Ca2-v_b1-v_b2;
+v_H = v_R13;
+v_Ke = v_K-(nK*(v_K-v_K))+v_K1-(nK*(v_K1-v_K1))+v_Kp+v_LCC_K2+v_LCC_K1-v_R11-v_R12-(1{dimensionless}/nK_stim*I_stim);
+v_Ki = -v_K-v_K1-v_Kp-v_LCC_K1-v_LCC_K2+v_R1+v_R2+(1{dimensionless}/nK_stim*I_stim);
+v_MgADP = v_R6;
+v_MgATP = -v_R14;
+v_Nae = v_Na+v_R8+v_R9+v_R10-(nNae_NCX*v_r5);
+v_Nai = -v_Na-v_R3-v_R4+v_R5+(nNai_NCX*v_r1);
+v_O_K1 = v_gK1-v_K1-v_K1;
+v_O_Kp = v_gKp-v_Kp-v_Kp;
+v_P1 = -v_R1+v_R15;
+v_P10 = v_R9-v_R10;
+v_P11 = v_R10-v_R11;
+v_P12 = -v_R12+v_R11;
+v_P13 = v_R12-v_R13;
+v_P14 = -v_R14+v_R13;
+v_P15 = v_R14-v_R15;
+v_P1_NCX = v_r6-v_r1;
+v_P2 = -v_R2+v_R1;
+v_P2_NCX = v_r1-v_r2;
+v_P3 = v_R2-v_R3;
+v_P3_NCX = v_r2-v_r3;
+v_P4 = v_R3-v_R4;
+v_P4_NCX = -v_r4+v_r3;
+v_P5 = v_R4-v_R5;
+v_P5_NCX = -v_r5+v_r4;
+v_P6 = v_R5-v_R6;
+v_P6_NCX = -v_r6+v_r5;
+v_P7 = v_R6-v_R7;
+v_P8 = -v_R8+v_R7;
+v_P9 = v_R8-v_R9;
+v_P_i = v_R13;
+v_S000_LCC = -v_d000-v_f1_000-v_f2_000-v_fCa00;
+v_S000_Na = -v_m000-v_h000-v_j000;
+v_S001_LCC = -v_d001-v_f1_001-v_f2_001+v_fCa00;
+v_S001_Na = -v_m001-v_h001+v_j000;
+v_S00_K = -v_X00-v_i00;
+v_S010_LCC = -v_d010+v_f1_000-v_fCa01-v_f3_010;
+v_S010_Na = -v_m010+v_h000-v_j010;
+v_S011_LCC = -v_d011+v_f1_001+v_fCa01-v_f3_011;
+v_S011_Na = -v_m011+v_h001+v_j010;
+v_S01_K = -v_X01+v_i00;
+v_S020_LCC = -v_d020+v_f2_000-v_fCa02+v_f3_010;
+v_S021_LCC = -v_d021+v_f2_001+v_fCa02+v_f3_011;
+v_S100_LCC = -v_f2_100+v_d000-v_f1_100-v_fCa10;
+v_S100_Na = v_m000-v_m100-v_h100-v_j100;
+v_S101_LCC = -v_f2_101+v_d001-v_f1_101+v_fCa10;
+v_S101_Na = v_m001-v_m101-v_h101+v_j100;
+v_S10_K = v_X00-v_X10-v_i10;
+v_S110_LCC = v_f1_100+v_d010-v_fCa11-v_f3_110;
+v_S110_Na = v_m010-v_m110+v_h100-v_j110;
+v_S111_LCC = v_f1_101+v_d011+v_fCa11+v_LCC_Ca1-v_LCC_Ca1+v_LCC_K1-v_LCC_K1-v_f3_111;
+v_S111_Na = v_m011-v_m111+v_h101+v_j110;
+v_S11_K = v_X01-v_X11+v_i10;
+v_S120_LCC = v_f2_100+v_d020-v_fCa12+v_f3_110;
+v_S121_LCC = v_f2_101+v_d021+v_fCa12+v_LCC_Ca2-v_LCC_Ca2+v_LCC_K2-v_LCC_K2+v_f3_111;
+v_S200_Na = v_m100-v_m200-v_h200-v_j200;
+v_S201_Na = v_m101-v_m201-v_h201+v_j200;
+v_S20_K = v_X10-v_i20;
+v_S210_Na = v_m110-v_m210+v_h200-v_j210;
+v_S211_Na = v_m111-v_m211+v_h201+v_j210;
+v_S21_K = v_X11+v_i20-v_K-v_K;
+v_S300_Na = v_m200-v_h300-v_j300;
+v_S301_Na = v_m201-v_h301+v_j300;
+v_S310_Na = v_m210+v_h300-v_j310;
+v_S311_Na = v_m211+v_h301+v_j310+v_Na-v_Na;
+v_TRPN = -v_b1;
+v_TRPNCa = v_b1;
+        ode(x_Cae, t) = v_Cae;
+        ode(x_Cai, t) = v_Cai;
+        ode(x_Ke, t) = v_Ke;
+        ode(x_Ki, t) = v_Ki;
+        ode(x_Nae, t) = v_Nae;
+        ode(x_Nai, t) = v_Nai;
+        ode(q_mem, t) = I_mem;
+        ode(x_CMDN, t) = v_CMDN;
+        ode(x_CMDNCa, t) = v_CMDNCa;
+        ode(x_TRPN, t) = v_TRPN;
+        ode(x_TRPNCa, t) = v_TRPNCa;
+        ode(x_P1_NCX, t) = v_P1_NCX;
+        ode(x_P2_NCX, t) = v_P2_NCX;
+        ode(x_P3_NCX, t) = v_P3_NCX;
+        ode(x_P4_NCX, t) = v_P4_NCX;
+        ode(x_P5_NCX, t) = v_P5_NCX;
+        ode(x_P6_NCX, t) = v_P6_NCX;
+        ode(x_H, t) = 0{fmol_per_sec};
+        ode(x_MgADP, t) = 0{fmol_per_sec};
+        ode(x_MgATP, t) = 0{fmol_per_sec};
+        ode(x_P7, t) = v_P7;
+        ode(x_P_i, t) = 0{fmol_per_sec};
+        ode(x_P14, t) = v_P14;
+        ode(x_P15, t) = v_P15;
+        ode(x_P1, t) = v_P1;
+        ode(x_P2, t) = v_P2;
+        ode(x_P3, t) = v_P3;
+        ode(x_P4, t) = v_P4;
+        ode(x_P5, t) = v_P5;
+        ode(x_P6, t) = v_P6;
+        ode(x_P10, t) = v_P10;
+        ode(x_P11, t) = v_P11;
+        ode(x_P12, t) = v_P12;
+        ode(x_P13, t) = v_P13;
+        ode(x_P8, t) = v_P8;
+        ode(x_P9, t) = v_P9;
+        ode(x_C_Kp, t) = v_C_Kp;
+        ode(x_O_Kp, t) = v_O_Kp;
+        ode(x_C_K1, t) = v_C_K1;
+        ode(x_O_K1, t) = v_O_K1;
+        ode(x_S00_K, t) = v_S00_K;
+        ode(x_S01_K, t) = v_S01_K;
+        ode(x_S10_K, t) = v_S10_K;
+        ode(x_S11_K, t) = v_S11_K;
+        ode(x_S20_K, t) = v_S20_K;
+        ode(x_S21_K, t) = v_S21_K;
+        ode(x_S000_LCC, t) = v_S000_LCC;
+        ode(x_S010_LCC, t) = v_S010_LCC;
+        ode(x_S020_LCC, t) = v_S020_LCC;
+        ode(x_S100_LCC, t) = v_S100_LCC;
+        ode(x_S110_LCC, t) = v_S110_LCC;
+        ode(x_S120_LCC, t) = v_S120_LCC;
+        ode(x_S001_LCC, t) = v_S001_LCC;
+        ode(x_S011_LCC, t) = v_S011_LCC;
+        ode(x_S021_LCC, t) = v_S021_LCC;
+        ode(x_S101_LCC, t) = v_S101_LCC;
+        ode(x_S111_LCC, t) = v_S111_LCC;
+        ode(x_S121_LCC, t) = v_S121_LCC;
+        ode(x_S000_Na, t) = v_S000_Na;
+        ode(x_S010_Na, t) = v_S010_Na;
+        ode(x_S100_Na, t) = v_S100_Na;
+        ode(x_S110_Na, t) = v_S110_Na;
+        ode(x_S200_Na, t) = v_S200_Na;
+        ode(x_S210_Na, t) = v_S210_Na;
+        ode(x_S300_Na, t) = v_S300_Na;
+        ode(x_S310_Na, t) = v_S310_Na;
+        ode(x_S001_Na, t) = v_S001_Na;
+        ode(x_S011_Na, t) = v_S011_Na;
+        ode(x_S101_Na, t) = v_S101_Na;
+        ode(x_S111_Na, t) = v_S111_Na;
+        ode(x_S201_Na, t) = v_S201_Na;
+        ode(x_S211_Na, t) = v_S211_Na;
+        ode(x_S301_Na, t) = v_S301_Na;
+        ode(x_S311_Na, t) = v_S311_Na;
         I_stim = sel
-        V_mem = q_mem/C_m
-        mu_CMDN = R*T*ln(K_CMDN*x_CMDN)
-        mu_CMDNCa = R*T*ln(K_CMDNCa*x_CMDNCa)
-        mu_C_K1 = R*T*ln(K_C_K1*x_C_K1)
-        mu_C_Kp = R*T*ln(K_C_Kp*x_C_Kp)
-        mu_Cae = R*T*ln(K_Cae*x_Cae)
-        mu_Cai = R*T*ln(K_Cai*x_Cai)
-        mu_H = R*T*ln(K_H*x_H)
-        mu_Ke = R*T*ln(K_Ke*x_Ke)
-        mu_Ki = R*T*ln(K_Ki*x_Ki)
-        mu_MgADP = R*T*ln(K_MgADP*x_MgADP)
-        mu_MgATP = R*T*ln(K_MgATP*x_MgATP)
-        mu_Nae = R*T*ln(K_Nae*x_Nae)
-        mu_Nai = R*T*ln(K_Nai*x_Nai)
-        mu_O_K1 = R*T*ln(K_O_K1*x_O_K1)
-        mu_O_Kp = R*T*ln(K_O_Kp*x_O_Kp)
-        mu_P1 = R*T*ln(K_1_NaK*x_P1)
-        mu_P10 = R*T*ln(K_10_NaK*x_P10)
-        mu_P11 = R*T*ln(K_11_NaK*x_P11)
-        mu_P12 = R*T*ln(K_12_NaK*x_P12)
-        mu_P13 = R*T*ln(K_13_NaK*x_P13)
-        mu_P14 = R*T*ln(K_14_NaK*x_P14)
-        mu_P15 = R*T*ln(K_15_NaK*x_P15)
-        mu_P1_NCX = R*T*ln(K_1_NCX*x_P1_NCX)
-        mu_P2 = R*T*ln(K_2_NaK*x_P2)
-        mu_P2_NCX = R*T*ln(K_2_NCX*x_P2_NCX)
-        mu_P3 = R*T*ln(K_3_NaK*x_P3)
-        mu_P3_NCX = R*T*ln(K_3_NCX*x_P3_NCX)
-        mu_P4 = R*T*ln(K_4_NaK*x_P4)
-        mu_P4_NCX = R*T*ln(K_4_NCX*x_P4_NCX)
-        mu_P5 = R*T*ln(K_5_NaK*x_P5)
-        mu_P5_NCX = R*T*ln(K_5_NCX*x_P5_NCX)
-        mu_P6 = R*T*ln(K_6_NaK*x_P6)
-        mu_P6_NCX = R*T*ln(K_6_NCX*x_P6_NCX)
-        mu_P7 = R*T*ln(K_7_NaK*x_P7)
-        mu_P8 = R*T*ln(K_8_NaK*x_P8)
-        mu_P9 = R*T*ln(K_9_NaK*x_P9)
-        mu_P_i = R*T*ln(K_P*x_P_i)
-        mu_S000_LCC = R*T*ln(K_000_LCC*x_S000_LCC)
-        mu_S000_Na = R*T*ln(K_000_Na*x_S000_Na)
-        mu_S001_LCC = R*T*ln(K_001_LCC*x_S001_LCC)
-        mu_S001_Na = R*T*ln(K_001_Na*x_S001_Na)
-        mu_S00_K = R*T*ln(K_00_K*x_S00_K)
-        mu_S010_LCC = R*T*ln(K_010_LCC*x_S010_LCC)
-        mu_S010_Na = R*T*ln(K_010_Na*x_S010_Na)
-        mu_S011_LCC = R*T*ln(K_011_LCC*x_S011_LCC)
-        mu_S011_Na = R*T*ln(K_011_Na*x_S011_Na)
-        mu_S01_K = R*T*ln(K_01_K*x_S01_K)
-        mu_S020_LCC = R*T*ln(K_020_LCC*x_S020_LCC)
-        mu_S021_LCC = R*T*ln(K_021_LCC*x_S021_LCC)
-        mu_S100_LCC = R*T*ln(K_100_LCC*x_S100_LCC)
-        mu_S100_Na = R*T*ln(K_100_Na*x_S100_Na)
-        mu_S101_LCC = R*T*ln(K_101_LCC*x_S101_LCC)
-        mu_S101_Na = R*T*ln(K_101_Na*x_S101_Na)
-        mu_S10_K = R*T*ln(K_10_K*x_S10_K)
-        mu_S110_LCC = R*T*ln(K_110_LCC*x_S110_LCC)
-        mu_S110_Na = R*T*ln(K_110_Na*x_S110_Na)
-        mu_S111_LCC = R*T*ln(K_111_LCC*x_S111_LCC)
-        mu_S111_Na = R*T*ln(K_111_Na*x_S111_Na)
-        mu_S11_K = R*T*ln(K_11_K*x_S11_K)
-        mu_S120_LCC = R*T*ln(K_120_LCC*x_S120_LCC)
-        mu_S121_LCC = R*T*ln(K_121_LCC*x_S121_LCC)
-        mu_S200_Na = R*T*ln(K_200_Na*x_S200_Na)
-        mu_S201_Na = R*T*ln(K_201_Na*x_S201_Na)
-        mu_S20_K = R*T*ln(K_20_K*x_S20_K)
-        mu_S210_Na = R*T*ln(K_210_Na*x_S210_Na)
-        mu_S211_Na = R*T*ln(K_211_Na*x_S211_Na)
-        mu_S21_K = R*T*ln(K_21_K*x_S21_K)
-        mu_S300_Na = R*T*ln(K_300_Na*x_S300_Na)
-        mu_S301_Na = R*T*ln(K_301_Na*x_S301_Na)
-        mu_S310_Na = R*T*ln(K_310_Na*x_S310_Na)
-        mu_S311_Na = R*T*ln(K_311_Na*x_S311_Na)
-        mu_TRPN = R*T*ln(K_TRPN*x_TRPN)
-        mu_TRPNCa = R*T*ln(K_TRPNCa*x_TRPNCa)
-        nK_stim = F
-        tPeriod = t-floor(t/stimPeriod)*stimPeriod
-        v_CMDN = -kappa_b2*(exp(Af_b2/(R*T))-exp(Ar_b2/(R*T)))
-        v_CMDNCa = kappa_b2*(exp(Af_b2/(R*T))-exp(Ar_b2/(R*T)))
-        v_C_K1 = -kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T)))
-        v_C_Kp = -kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T)))
-        v_Cae = kappa_4_NCX*(exp(Af_r4/(R*T))-exp(Ar_r4/(R*T)))+sel+sel
-        v_Cai = -kappa_2_NCX*(exp(Af_r2/(R*T))-exp(Ar_r2/(R*T)))+z_rCa*(kappa_fCa10*(exp(Af_fCa10/(R*T))-exp(Ar_fCa10/(R*T))))+z_rCa*(kappa_fCa11*(exp(Af_fCa11/(R*T))-exp(Ar_fCa11/(R*T))))+z_rCa*(kappa_fCa02*(exp(Af_fCa02/(R*T))-exp(Ar_fCa02/(R*T))))+z_rCa*(kappa_fCa01*(exp(Af_fCa01/(R*T))-exp(Ar_fCa01/(R*T))))+z_rCa*(kappa_fCa00*(exp(Af_fCa00/(R*T))-exp(Ar_fCa00/(R*T))))+z_rCa*(kappa_fCa12*(exp(Af_fCa12/(R*T))-exp(Ar_fCa12/(R*T))))+-sel+-sel+kappa_b1*(exp(Af_b1/(R*T))-exp(Ar_b1/(R*T)))-kappa_b2*(exp(Af_b2/(R*T))-exp(Ar_b2/(R*T)))
-        v_H = kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)))
-        v_K = sel
-        v_K1 = sel
-        v_Ke = sel-nK*(sel-sel)+sel-nK*(sel-sel)+sel+sel+sel+kappa_11_NaK*(exp(Af_R11/(R*T))-exp(Ar_R11/(R*T)))-kappa_12_NaK*(exp(Af_R12/(R*T))-exp(Ar_R12/(R*T)))-1{dimensionless}/nK_stim*(sel)
-        v_Ki = -sel+-sel+-sel+-sel+-sel+kappa_1_NaK*(exp(Af_R1/(R*T))-exp(Ar_R1/(R*T)))+kappa_2_NaK*(exp(Af_R2/(R*T))-exp(Ar_R2/(R*T)))+1{dimensionless}/nK_stim*(sel)
-        v_Kp = sel
-        v_LCC_Ca1 = sel
-        v_LCC_Ca2 = sel
-        v_LCC_K1 = sel
-        v_LCC_K2 = sel
-        v_MgADP = kappa_6_NaK*(exp(Af_R6/(R*T))-exp(Ar_R6/(R*T)))
-        v_MgATP = -kappa_14_NaK*(exp(Af_R14/(R*T))-exp(Ar_R14/(R*T)))
+            case (tPeriod >= 0.3{second}) and (tPeriod <= 0.3{second}+stimDuration):
+                0.03{volt}*C_m/stimDuration;
+            otherwise:
+                0.0{fA};
+        endsel;
         v_Na = sel
-        v_Nae = sel+kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T)))+kappa_9_NaK*(exp(Af_R9/(R*T))-exp(Ar_R9/(R*T)))+kappa_10_NaK*(exp(Af_R10/(R*T))-exp(Ar_R10/(R*T)))+-nNae_NCX*(kappa_5_NCX*(exp(Af_r5/(R*T))-exp(Ar_r5/(R*T))))
-        v_Nai = -sel+kappa_3_NaK*(exp(Af_R3/(R*T))-exp(Ar_R3/(R*T)))-kappa_4_NaK*(exp(Af_R4/(R*T))-exp(Ar_R4/(R*T)))+kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T)))+nNai_NCX*(kappa_1_NCX*(exp(Af_r1/(R*T))-exp(Ar_r1/(R*T))))
-        v_O_K1 = kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T)))-sel-sel
-        v_O_Kp = kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T)))-sel-sel
-        v_P1 = kappa_1_NaK*(exp(Af_R1/(R*T))-exp(Ar_R1/(R*T)))+kappa_15_NaK*(exp(Af_R15/(R*T))-exp(Ar_R15/(R*T)))
-        v_P10 = kappa_9_NaK*(exp(Af_R9/(R*T))-exp(Ar_R9/(R*T)))-kappa_10_NaK*(exp(Af_R10/(R*T))-exp(Ar_R10/(R*T)))
-        v_P11 = kappa_10_NaK*(exp(Af_R10/(R*T))-exp(Ar_R10/(R*T)))-kappa_11_NaK*(exp(Af_R11/(R*T))-exp(Ar_R11/(R*T)))
-        v_P12 = kappa_12_NaK*(exp(Af_R12/(R*T))-exp(Ar_R12/(R*T)))+kappa_11_NaK*(exp(Af_R11/(R*T))-exp(Ar_R11/(R*T)))
-        v_P13 = kappa_12_NaK*(exp(Af_R12/(R*T))-exp(Ar_R12/(R*T)))-kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)))
-        v_P14 = kappa_14_NaK*(exp(Af_R14/(R*T))-exp(Ar_R14/(R*T)))+kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)))
-        v_P15 = kappa_14_NaK*(exp(Af_R14/(R*T))-exp(Ar_R14/(R*T)))-kappa_15_NaK*(exp(Af_R15/(R*T))-exp(Ar_R15/(R*T)))
-        v_P1_NCX = kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T)))-kappa_1_NCX*(exp(Af_r1/(R*T))-exp(Ar_r1/(R*T)))
-        v_P2 = kappa_2_NaK*(exp(Af_R2/(R*T))-exp(Ar_R2/(R*T)))+kappa_1_NaK*(exp(Af_R1/(R*T))-exp(Ar_R1/(R*T)))
-        v_P2_NCX = kappa_1_NCX*(exp(Af_r1/(R*T))-exp(Ar_r1/(R*T)))-kappa_2_NCX*(exp(Af_r2/(R*T))-exp(Ar_r2/(R*T)))
-        v_P3 = kappa_2_NaK*(exp(Af_R2/(R*T))-exp(Ar_R2/(R*T)))-kappa_3_NaK*(exp(Af_R3/(R*T))-exp(Ar_R3/(R*T)))
-        v_P3_NCX = kappa_2_NCX*(exp(Af_r2/(R*T))-exp(Ar_r2/(R*T)))-kappa_3_NCX*(exp(Af_r3/(R*T))-exp(Ar_r3/(R*T)))
-        v_P4 = kappa_3_NaK*(exp(Af_R3/(R*T))-exp(Ar_R3/(R*T)))-kappa_4_NaK*(exp(Af_R4/(R*T))-exp(Ar_R4/(R*T)))
-        v_P4_NCX = kappa_4_NCX*(exp(Af_r4/(R*T))-exp(Ar_r4/(R*T)))+kappa_3_NCX*(exp(Af_r3/(R*T))-exp(Ar_r3/(R*T)))
-        v_P5 = kappa_4_NaK*(exp(Af_R4/(R*T))-exp(Ar_R4/(R*T)))-kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T)))
-        v_P5_NCX = kappa_5_NCX*(exp(Af_r5/(R*T))-exp(Ar_r5/(R*T)))+kappa_4_NCX*(exp(Af_r4/(R*T))-exp(Ar_r4/(R*T)))
-        v_P6 = kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T)))-kappa_6_NaK*(exp(Af_R6/(R*T))-exp(Ar_R6/(R*T)))
-        v_P6_NCX = kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T)))+kappa_5_NCX*(exp(Af_r5/(R*T))-exp(Ar_r5/(R*T)))
-        v_P7 = kappa_6_NaK*(exp(Af_R6/(R*T))-exp(Ar_R6/(R*T)))-kappa_7_NaK*(exp(Af_R7/(R*T))-exp(Ar_R7/(R*T)))
-        v_P8 = kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T)))+kappa_7_NaK*(exp(Af_R7/(R*T))-exp(Ar_R7/(R*T)))
-        v_P9 = kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T)))-kappa_9_NaK*(exp(Af_R9/(R*T))-exp(Ar_R9/(R*T)))
-        v_P_i = kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)))
-        v_R1 = kappa_1_NaK*(exp(Af_R1/(R*T))-exp(Ar_R1/(R*T)))
-        v_R10 = kappa_10_NaK*(exp(Af_R10/(R*T))-exp(Ar_R10/(R*T)))
-        v_R11 = kappa_11_NaK*(exp(Af_R11/(R*T))-exp(Ar_R11/(R*T)))
-        v_R12 = kappa_12_NaK*(exp(Af_R12/(R*T))-exp(Ar_R12/(R*T)))
-        v_R13 = kappa_13_NaK*(exp(Af_R13/(R*T))-exp(Ar_R13/(R*T)))
-        v_R14 = kappa_14_NaK*(exp(Af_R14/(R*T))-exp(Ar_R14/(R*T)))
-        v_R15 = kappa_15_NaK*(exp(Af_R15/(R*T))-exp(Ar_R15/(R*T)))
-        v_R2 = kappa_2_NaK*(exp(Af_R2/(R*T))-exp(Ar_R2/(R*T)))
-        v_R3 = kappa_3_NaK*(exp(Af_R3/(R*T))-exp(Ar_R3/(R*T)))
-        v_R4 = kappa_4_NaK*(exp(Af_R4/(R*T))-exp(Ar_R4/(R*T)))
-        v_R5 = kappa_5_NaK*(exp(Af_R5/(R*T))-exp(Ar_R5/(R*T)))
-        v_R6 = kappa_6_NaK*(exp(Af_R6/(R*T))-exp(Ar_R6/(R*T)))
-        v_R7 = kappa_7_NaK*(exp(Af_R7/(R*T))-exp(Ar_R7/(R*T)))
-        v_R8 = kappa_8_NaK*(exp(Af_R8/(R*T))-exp(Ar_R8/(R*T)))
-        v_R9 = kappa_9_NaK*(exp(Af_R9/(R*T))-exp(Ar_R9/(R*T)))
-        v_S000_LCC = kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T)))-kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T)))-kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T)))-kappa_fCa00*(exp(Af_fCa00/(R*T))-exp(Ar_fCa00/(R*T)))
-        v_S000_Na = kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T)))-kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T)))-kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T)))
-        v_S001_LCC = kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T)))-kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T)))-kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T)))--kappa_fCa00*(exp(Af_fCa00/(R*T))-exp(Ar_fCa00/(R*T)))
-        v_S001_Na = kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T)))-kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T)))--kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T)))
-        v_S00_K = kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T)))-kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T)))
-        v_S010_LCC = kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T)))+kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T)))-kappa_fCa01*(exp(Af_fCa01/(R*T))-exp(Ar_fCa01/(R*T)))-kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T)))
-        v_S010_Na = kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T)))+kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T)))-kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T)))
-        v_S011_LCC = kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T)))+kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T)))--kappa_fCa01*(exp(Af_fCa01/(R*T))-exp(Ar_fCa01/(R*T)))-kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T)))
-        v_S011_Na = kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T)))+kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T)))--kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T)))
-        v_S01_K = kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T)))+kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T)))
-        v_S020_LCC = kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T)))+kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T)))-kappa_fCa02*(exp(Af_fCa02/(R*T))-exp(Ar_fCa02/(R*T)))+kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T)))
-        v_S021_LCC = kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T)))+kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T)))--kappa_fCa02*(exp(Af_fCa02/(R*T))-exp(Ar_fCa02/(R*T)))+kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T)))
-        v_S100_LCC = kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T)))+kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T)))-kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T)))-kappa_fCa10*(exp(Af_fCa10/(R*T))-exp(Ar_fCa10/(R*T)))
-        v_S100_Na = kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T)))-kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T)))-kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T)))-kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T)))
-        v_S101_LCC = kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T)))+kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T)))-kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T)))--kappa_fCa10*(exp(Af_fCa10/(R*T))-exp(Ar_fCa10/(R*T)))
-        v_S101_Na = kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T)))-kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T)))-kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T)))--kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T)))
-        v_S10_K = kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T)))-kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T)))-kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T)))
-        v_S110_LCC = kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T)))+kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T)))-kappa_fCa11*(exp(Af_fCa11/(R*T))-exp(Ar_fCa11/(R*T)))-kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T)))
-        v_S110_Na = kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T)))-kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T)))+kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T)))-kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T)))
-        v_S111_LCC = kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T)))+kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T)))-kappa_fCa11*(exp(Af_fCa11/(R*T))-exp(Ar_fCa11/(R*T)))+sel-sel+sel-sel-kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T)))
-        v_S111_Na = kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T)))-kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T)))+kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T)))--kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T)))
-        v_S11_K = kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T)))-kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T)))+kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T)))
-        v_S120_LCC = kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T)))+kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T)))-kappa_fCa12*(exp(Af_fCa12/(R*T))-exp(Ar_fCa12/(R*T)))+kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T)))
-        v_S121_LCC = kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T)))+kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T)))-kappa_fCa12*(exp(Af_fCa12/(R*T))-exp(Ar_fCa12/(R*T)))+sel-sel+sel-sel+kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T)))
-        v_S200_Na = kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T)))-kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T)))-kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T)))-kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T)))
-        v_S201_Na = kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T)))-kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T)))-kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T)))--kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T)))
-        v_S20_K = kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T)))-kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T)))
-        v_S210_Na = kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T)))-kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T)))+kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T)))-kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T)))
-        v_S211_Na = kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T)))-kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T)))+kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T)))--kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T)))
-        v_S21_K = kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T)))+kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T)))-sel-sel
-        v_S300_Na = kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T)))-kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T)))-kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T)))
-        v_S301_Na = kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T)))-kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T)))--kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T)))
-        v_S310_Na = kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T)))+kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T)))-kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T)))
-        v_S311_Na = kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T)))+kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T)))-kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T)))+sel-sel
-        v_TRPN = -kappa_b1*(exp(Af_b1/(R*T))-exp(Ar_b1/(R*T)))
-        v_TRPNCa = kappa_b1*(exp(Af_b1/(R*T))-exp(Ar_b1/(R*T)))
-        v_X00 = kappa_X00*(exp(Af_X00/(R*T))-exp(Ar_X00/(R*T)))
-        v_X01 = kappa_X01*(exp(Af_X01/(R*T))-exp(Ar_X01/(R*T)))
-        v_X10 = kappa_X10*(exp(Af_X10/(R*T))-exp(Ar_X10/(R*T)))
-        v_X11 = kappa_X11*(exp(Af_X11/(R*T))-exp(Ar_X11/(R*T)))
-        v_b1 = kappa_b1*(exp(Af_b1/(R*T))-exp(Ar_b1/(R*T)))
-        v_b2 = kappa_b2*(exp(Af_b2/(R*T))-exp(Ar_b2/(R*T)))
-        v_d000 = kappa_d000*(exp(Af_d000/(R*T))-exp(Ar_d000/(R*T)))
-        v_d001 = kappa_d001*(exp(Af_d001/(R*T))-exp(Ar_d001/(R*T)))
-        v_d010 = kappa_d010*(exp(Af_d010/(R*T))-exp(Ar_d010/(R*T)))
-        v_d011 = kappa_d011*(exp(Af_d011/(R*T))-exp(Ar_d011/(R*T)))
-        v_d020 = kappa_d020*(exp(Af_d020/(R*T))-exp(Ar_d020/(R*T)))
-        v_d021 = kappa_d021*(exp(Af_d021/(R*T))-exp(Ar_d021/(R*T)))
-        v_f1_000 = kappa_f1_000*(exp(Af_f1_000/(R*T))-exp(Ar_f1_000/(R*T)))
-        v_f1_001 = kappa_f1_001*(exp(Af_f1_001/(R*T))-exp(Ar_f1_001/(R*T)))
-        v_f1_100 = kappa_f1_100*(exp(Af_f1_100/(R*T))-exp(Ar_f1_100/(R*T)))
-        v_f1_101 = kappa_f1_101*(exp(Af_f1_101/(R*T))-exp(Ar_f1_101/(R*T)))
-        v_f2_000 = kappa_f2_000*(exp(Af_f2_000/(R*T))-exp(Ar_f2_000/(R*T)))
-        v_f2_001 = kappa_f2_001*(exp(Af_f2_001/(R*T))-exp(Ar_f2_001/(R*T)))
-        v_f2_100 = kappa_f2_100*(exp(Af_f2_100/(R*T))-exp(Ar_f2_100/(R*T)))
-        v_f2_101 = kappa_f2_101*(exp(Af_f2_101/(R*T))-exp(Ar_f2_101/(R*T)))
-        v_f3_010 = kappa_f3_010*(exp(Af_f3_010/(R*T))-exp(Ar_f3_010/(R*T)))
-        v_f3_011 = kappa_f3_011*(exp(Af_f3_011/(R*T))-exp(Ar_f3_011/(R*T)))
-        v_f3_110 = kappa_f3_110*(exp(Af_f3_110/(R*T))-exp(Ar_f3_110/(R*T)))
-        v_f3_111 = kappa_f3_111*(exp(Af_f3_111/(R*T))-exp(Ar_f3_111/(R*T)))
-        v_fCa00 = kappa_fCa00*(exp(Af_fCa00/(R*T))-exp(Ar_fCa00/(R*T)))
-        v_fCa01 = kappa_fCa01*(exp(Af_fCa01/(R*T))-exp(Ar_fCa01/(R*T)))
-        v_fCa02 = kappa_fCa02*(exp(Af_fCa02/(R*T))-exp(Ar_fCa02/(R*T)))
-        v_fCa10 = kappa_fCa10*(exp(Af_fCa10/(R*T))-exp(Ar_fCa10/(R*T)))
-        v_fCa11 = kappa_fCa11*(exp(Af_fCa11/(R*T))-exp(Ar_fCa11/(R*T)))
-        v_fCa12 = kappa_fCa12*(exp(Af_fCa12/(R*T))-exp(Ar_fCa12/(R*T)))
-        v_gK1 = kappa_gK1*(exp(Af_gK1/(R*T))-exp(Ar_gK1/(R*T)))
-        v_gKp = kappa_gKp*(exp(Af_gKp/(R*T))-exp(Ar_gKp/(R*T)))
-        v_h000 = kappa_h000*(exp(Af_h000/(R*T))-exp(Ar_h000/(R*T)))
-        v_h001 = kappa_h001*(exp(Af_h001/(R*T))-exp(Ar_h001/(R*T)))
-        v_h100 = kappa_h100*(exp(Af_h100/(R*T))-exp(Ar_h100/(R*T)))
-        v_h101 = kappa_h101*(exp(Af_h101/(R*T))-exp(Ar_h101/(R*T)))
-        v_h200 = kappa_h200*(exp(Af_h200/(R*T))-exp(Ar_h200/(R*T)))
-        v_h201 = kappa_h201*(exp(Af_h201/(R*T))-exp(Ar_h201/(R*T)))
-        v_h300 = kappa_h300*(exp(Af_h300/(R*T))-exp(Ar_h300/(R*T)))
-        v_h301 = kappa_h301*(exp(Af_h301/(R*T))-exp(Ar_h301/(R*T)))
-        v_i00 = kappa_i00*(exp(Af_i00/(R*T))-exp(Ar_i00/(R*T)))
-        v_i10 = kappa_i10*(exp(Af_i10/(R*T))-exp(Ar_i10/(R*T)))
-        v_i20 = kappa_i20*(exp(Af_i20/(R*T))-exp(Ar_i20/(R*T)))
-        v_j000 = kappa_j000*(exp(Af_j000/(R*T))-exp(Ar_j000/(R*T)))
-        v_j010 = kappa_j010*(exp(Af_j010/(R*T))-exp(Ar_j010/(R*T)))
-        v_j100 = kappa_j100*(exp(Af_j100/(R*T))-exp(Ar_j100/(R*T)))
-        v_j110 = kappa_j110*(exp(Af_j110/(R*T))-exp(Ar_j110/(R*T)))
-        v_j200 = kappa_j200*(exp(Af_j200/(R*T))-exp(Ar_j200/(R*T)))
-        v_j210 = kappa_j210*(exp(Af_j210/(R*T))-exp(Ar_j210/(R*T)))
-        v_j300 = kappa_j300*(exp(Af_j300/(R*T))-exp(Ar_j300/(R*T)))
-        v_j310 = kappa_j310*(exp(Af_j310/(R*T))-exp(Ar_j310/(R*T)))
-        v_m000 = kappa_m000*(exp(Af_m000/(R*T))-exp(Ar_m000/(R*T)))
-        v_m001 = kappa_m001*(exp(Af_m001/(R*T))-exp(Ar_m001/(R*T)))
-        v_m010 = kappa_m010*(exp(Af_m010/(R*T))-exp(Ar_m010/(R*T)))
-        v_m011 = kappa_m011*(exp(Af_m011/(R*T))-exp(Ar_m011/(R*T)))
-        v_m100 = kappa_m100*(exp(Af_m100/(R*T))-exp(Ar_m100/(R*T)))
-        v_m101 = kappa_m101*(exp(Af_m101/(R*T))-exp(Ar_m101/(R*T)))
-        v_m110 = kappa_m110*(exp(Af_m110/(R*T))-exp(Ar_m110/(R*T)))
-        v_m111 = kappa_m111*(exp(Af_m111/(R*T))-exp(Ar_m111/(R*T)))
-        v_m200 = kappa_m200*(exp(Af_m200/(R*T))-exp(Ar_m200/(R*T)))
-        v_m201 = kappa_m201*(exp(Af_m201/(R*T))-exp(Ar_m201/(R*T)))
-        v_m210 = kappa_m210*(exp(Af_m210/(R*T))-exp(Ar_m210/(R*T)))
-        v_m211 = kappa_m211*(exp(Af_m211/(R*T))-exp(Ar_m211/(R*T)))
-        v_r1 = kappa_1_NCX*(exp(Af_r1/(R*T))-exp(Ar_r1/(R*T)))
-        v_r2 = kappa_2_NCX*(exp(Af_r2/(R*T))-exp(Ar_r2/(R*T)))
-        v_r3 = kappa_3_NCX*(exp(Af_r3/(R*T))-exp(Ar_r3/(R*T)))
-        v_r4 = kappa_4_NCX*(exp(Af_r4/(R*T))-exp(Ar_r4/(R*T)))
-        v_r5 = kappa_5_NCX*(exp(Af_r5/(R*T))-exp(Ar_r5/(R*T)))
-        v_r6 = kappa_6_NCX*(exp(Af_r6/(R*T))-exp(Ar_r6/(R*T)))
-        ode(x_Cae, t) = v_Cae
-        ode(x_Cai, t) = v_Cai
-        ode(x_Ke, t) = v_Ke
-        ode(x_Ki, t) = v_Ki
-        ode(x_Nae, t) = v_Nae
-        ode(x_Nai, t) = v_Nai
-        ode(q_mem, t) = I_mem
-        ode(x_CMDN, t) = v_CMDN
-        ode(x_CMDNCa, t) = v_CMDNCa
-        ode(x_TRPN, t) = v_TRPN
-        ode(x_TRPNCa, t) = v_TRPNCa
-        ode(x_P1_NCX, t) = v_P1_NCX
-        ode(x_P2_NCX, t) = v_P2_NCX
-        ode(x_P3_NCX, t) = v_P3_NCX
-        ode(x_P4_NCX, t) = v_P4_NCX
-        ode(x_P5_NCX, t) = v_P5_NCX
-        ode(x_P6_NCX, t) = v_P6_NCX
-        ode(x_H, t) = 0{fmol_per_sec}
-        ode(x_MgADP, t) = 0{fmol_per_sec}
-        ode(x_MgATP, t) = 0{fmol_per_sec}
-        ode(x_P7, t) = v_P7
-        ode(x_P_i, t) = 0{fmol_per_sec}
-        ode(x_P14, t) = v_P14
-        ode(x_P15, t) = v_P15
-        ode(x_P1, t) = v_P1
-        ode(x_P2, t) = v_P2
-        ode(x_P3, t) = v_P3
-        ode(x_P4, t) = v_P4
-        ode(x_P5, t) = v_P5
-        ode(x_P6, t) = v_P6
-        ode(x_P10, t) = v_P10
-        ode(x_P11, t) = v_P11
-        ode(x_P12, t) = v_P12
-        ode(x_P13, t) = v_P13
-        ode(x_P8, t) = v_P8
-        ode(x_P9, t) = v_P9
-        ode(x_C_Kp, t) = v_C_Kp
-        ode(x_O_Kp, t) = v_O_Kp
-        ode(x_C_K1, t) = v_C_K1
-        ode(x_O_K1, t) = v_O_K1
-        ode(x_S00_K, t) = v_S00_K
-        ode(x_S01_K, t) = v_S01_K
-        ode(x_S10_K, t) = v_S10_K
-        ode(x_S11_K, t) = v_S11_K
-        ode(x_S20_K, t) = v_S20_K
-        ode(x_S21_K, t) = v_S21_K
-        ode(x_S000_LCC, t) = v_S000_LCC
-        ode(x_S010_LCC, t) = v_S010_LCC
-        ode(x_S020_LCC, t) = v_S020_LCC
-        ode(x_S100_LCC, t) = v_S100_LCC
-        ode(x_S110_LCC, t) = v_S110_LCC
-        ode(x_S120_LCC, t) = v_S120_LCC
-        ode(x_S001_LCC, t) = v_S001_LCC
-        ode(x_S011_LCC, t) = v_S011_LCC
-        ode(x_S021_LCC, t) = v_S021_LCC
-        ode(x_S101_LCC, t) = v_S101_LCC
-        ode(x_S111_LCC, t) = v_S111_LCC
-        ode(x_S121_LCC, t) = v_S121_LCC
-        ode(x_S000_Na, t) = v_S000_Na
-        ode(x_S010_Na, t) = v_S010_Na
-        ode(x_S100_Na, t) = v_S100_Na
-        ode(x_S110_Na, t) = v_S110_Na
-        ode(x_S200_Na, t) = v_S200_Na
-        ode(x_S210_Na, t) = v_S210_Na
-        ode(x_S300_Na, t) = v_S300_Na
-        ode(x_S310_Na, t) = v_S310_Na
-        ode(x_S001_Na, t) = v_S001_Na
-        ode(x_S011_Na, t) = v_S011_Na
-        ode(x_S101_Na, t) = v_S101_Na
-        ode(x_S111_Na, t) = v_S111_Na
-        ode(x_S201_Na, t) = v_S201_Na
-        ode(x_S211_Na, t) = v_S211_Na
-        ode(x_S301_Na, t) = v_S301_Na
-        ode(x_S311_Na, t) = v_S311_Na
+            case Am_Na == 0{J_per_mol}:
+                kappa_Na*(exp(Af_Na/(R*T))-exp(Ar_Na/(R*T)));
+            otherwise:
+                kappa_Na*Am_Na/(R*T)/(exp(Am_Na/(R*T))-1{dimensionless})*(exp(Af_Na/(R*T))-exp(Ar_Na/(R*T)));
+        endsel;
+        v_K = sel
+            case Am_K == 0{J_per_mol}:
+                kappa_K*(exp(Af_K/(R*T))-exp(Ar_K/(R*T)));
+            otherwise:
+                kappa_K*Am_K/(R*T)/(exp(Am_K/(R*T))-1{dimensionless})*(exp(Af_K/(R*T))-exp(Ar_K/(R*T)));
+        endsel;
+        v_Kp = sel
+            case Am_Kp == 0{J_per_mol}:
+                kappa_Kp*(exp(Af_Kp/(R*T))-exp(Ar_Kp/(R*T)));
+            otherwise:
+                kappa_Kp*Am_Kp/(R*T)/(exp(Am_Kp/(R*T))-1{dimensionless})*(exp(Af_Kp/(R*T))-exp(Ar_Kp/(R*T)));
+        endsel;
+        v_K1 = sel
+            case Am_K1 == 0{J_per_mol}:
+                kappa_K1*(exp(Af_K1/(R*T))-exp(Ar_K1/(R*T)));
+            otherwise:
+                kappa_K1*Am_K1/(R*T)/(exp(Am_K1/(R*T))-1{dimensionless})*(exp(Af_K1/(R*T))-exp(Ar_K1/(R*T)));
+        endsel;
+        v_LCC_Ca1 = sel
+            case Am_LCC_Ca1 == 0{J_per_mol}:
+                kappa_LCC_Ca1*(exp(Af_LCC_Ca1/(R*T))-exp(Ar_LCC_Ca1/(R*T)));
+            otherwise:
+                kappa_LCC_Ca1*Am_LCC_Ca1/(R*T)/(exp(Am_LCC_Ca1/(R*T))-1{dimensionless})*(exp(Af_LCC_Ca1/(R*T))-exp(Ar_LCC_Ca1/(R*T)));
+        endsel;
+        v_LCC_Ca2 = sel
+            case Am_LCC_Ca2 == 0{J_per_mol}:
+                kappa_LCC_Ca2*(exp(Af_LCC_Ca2/(R*T))-exp(Ar_LCC_Ca2/(R*T)));
+            otherwise:
+                kappa_LCC_Ca2*Am_LCC_Ca2/(R*T)/(exp(Am_LCC_Ca2/(R*T))-1{dimensionless})*(exp(Af_LCC_Ca2/(R*T))-exp(Ar_LCC_Ca2/(R*T)));
+        endsel;
+        v_LCC_K1 = sel
+            case Am_LCC_K1 == 0{J_per_mol}:
+                kappa_LCC_K1*(exp(Af_LCC_K1/(R*T))-exp(Ar_LCC_K1/(R*T)));
+            otherwise:
+                kappa_LCC_K1*Am_LCC_K1/(R*T)/(exp(Am_LCC_K1/(R*T))-1{dimensionless})*(exp(Af_LCC_K1/(R*T))-exp(Ar_LCC_K1/(R*T)));
+        endsel;
+        v_LCC_K2 = sel
+            case Am_LCC_K2 == 0{J_per_mol}:
+                kappa_LCC_K2*(exp(Af_LCC_K2/(R*T))-exp(Ar_LCC_K2/(R*T)));
+            otherwise:
+                kappa_LCC_K2*Am_LCC_K2/(R*T)/(exp(Am_LCC_K2/(R*T))-1{dimensionless})*(exp(Af_LCC_K2/(R*T))-exp(Ar_LCC_K2/(R*T)));
+        endsel;

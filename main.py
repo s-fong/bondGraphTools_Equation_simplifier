@@ -101,7 +101,9 @@ def find_exp(txt, var):
 if __name__ == '__main__':
     tstart = time.time()
 
+    path = 'G:\\My Drive\\SPARC_work\\BOND_GRAPHS_sparc\\MODELS\\pan_SERCA_shelleymod\\cellml_to_txt\\'
     path = 'examples\\'
+    inputname = 'SERCA_bg.cellml.txt'
     inputname = 'cardiac_AP_dynamic_ions.txt'
     cfname = path + inputname
 
@@ -122,8 +124,8 @@ if __name__ == '__main__':
     for ii, line in enumerate(txt):
         if 'var Af_R1: J_per_mol' in line:
             j = 10
-        if ' var ' in line and 'var e_' not in line and 'var f_' not in line and 'init:' not in line:
-            if 'init' not in line and 'sel' not in line:
+        if ' var ' in line and 'var e_' not in line and 'var f_' not in line: # and 'init:' not in line:
+            if 'sel' not in line and 'init' not in line:
                 vs.append(line.split('var ')[-1].split(':')[0])
                 # copy over rate equations for each channel - happens over several lines
             decs.append(line+';')
