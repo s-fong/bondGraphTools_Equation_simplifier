@@ -7,9 +7,9 @@ import time
 def find_exp(txt, var):
     # global lhs
     mathSymbols = ['+','-','*','/']
-    print(var)
+    # print(var)
     match = []
-    if var == 'Af_r5': # # I_mem
+    if var == 'v_O_K1': # # I_mem
         j = 10
     try:
         match = [s for s in txt if '%s = '%var in s][0]
@@ -42,7 +42,7 @@ def find_exp(txt, var):
                     match = find_exp(txt, rhs[1:]) # if negative sign in front of f
                     rhs = match.split(' = ')[-1]
                     lhs = var
-                    match = lhs + ' = -' + rhs
+                    match = lhs + ' = -(' + rhs + ')'
             elif '+' not in match and '*' not in match and '/' not in match and '-' not in match:
                 match = find_exp(txt, match.split('= ')[-1])
                 rhs = match.split(' = ')[-1]
@@ -75,9 +75,9 @@ def find_exp(txt, var):
                             term=find_exp(txt,term)
                             terms[it] = term.split(' = ')[-1]
                         if rhs[0] == '-':
-                            match = match.split(' = ')[0]+' = -'+'-'.join(terms)
+                            match = match.split(' = ')[0] + ' = -('+'-'.join(terms)+')'
                         else:
-                            match = match.split(' = ')[0]+' = '+'-'.join(terms)
+                            match = match.split(' = ')[0] + ' = ('+'-'.join(terms)+')'
                     else:
                         # addition only
                         terms = rhs.split('+')
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     path = 'G:\\My Drive\\SPARC_work\\BOND_GRAPHS_sparc\\MODELS\\pan_SERCA_shelleymod\\cellml_to_txt\\'
     path = 'examples\\'
-    inputname = 'SERCA_bg.cellml.txt'
+    # inputname = 'SERCA_bg.cellml.txt'
     inputname = 'cardiac_AP_dynamic_ions.txt'
     cfname = path + inputname
 
@@ -167,26 +167,30 @@ if __name__ == '__main__':
 
         unitWords = ['fmol','per_fmol','fmol_per_sec','fA','fC','J_per_mol','mM']
 
-        channels = ['Na','K1','Kp','NaK','LCC','NCX']
+        channels = ['Na','K','K1','Kp','NaK','LCC','NCX'] # make sure this list contains all channels included in original
         special_channels = ['NaK','LCC','NCX']
         chd = {c:{'keywords':[],'nonkeywords':[],'fluxname':[]} for c in channels}
+        common_var_names = {'t: second','mem','C_m','R:','F:','T:'}
 
-        chd['Na']['keywords'] = ['Na','_m', '_h', '_j']
-        chd['Na']['nonkeywords'] = ['NaK','NCX']
-        chd['K1']['keywords'] = ['Ki','Ke','K1']
-        chd['K1']['nonkeywords'] = ['LCC']
-        chd['Kp']['keywords'] = ['Ki','Ke','Kp']
+        chd['Na']['keywords'] = ['Na','_m', '_h', '_j','z_fm','z_fh','z_fj','z_rm','z_rh','z_rj']
+        chd['Na']['nonkeywords'] = ['NaK','NCX','zF']
+        chd['K']['keywords'] = ['Ki','Ke','_K','zK','nK','X','i']
+        chd['K']['nonkeywords'] = ['K1','Kp','LCC','Kp','nK_stim','Na','NCX','Ca','CMDN','TRPN','MgA','_m','_j','_h']
+        chd['K1']['keywords'] = ['Ki','Ke','K1','zK','nK']
+        chd['K1']['nonkeywords'] = ['LCC','Kp','X','nK_stim']
+        chd['Kp']['keywords'] = ['Ki','Ke','Kp','zK']
         chd['Kp']['nonkeywords'] = []
-        chd['NaK']['keywords'] = ['NaK','_R','Nai','Nae','Ki','Ke']
-        chd['NaK']['nonkeywords'] = []
-        chd['LCC']['keywords'] = ['LCC','_fCa','_f1','_f2','_f3','d0']
+        chd['NaK']['keywords'] = ['NaK','_R','Nai','Nae','Ki','Ke','_P','MgA','_H','zF']
+        chd['NaK']['nonkeywords'] = ['NCX']
+        chd['LCC']['keywords'] = ['LCC','_fCa','_f1','_f2','_f3','d0','Cai','Cae','zCa','zK','mu_Ki','mu_Ke','z_fd','z_ff',
+                                  'z_rd','z_rf','z_rCa']
         chd['LCC']['nonkeywords'] = []
-        chd['NCX']['keywords'] = ['NCX']
+        chd['NCX']['keywords'] = ['NCX','_r1','_r2','_r3','_r4','_r5','_r6','Cai','Cae','Nai','Nae']
         chd['NCX']['nonkeywords'] = []
 
         for key in chd.keys():
-            chd[key]['keywords'].append('t: second')
-            chd[key]['keywords'].append('mem')
+            for w in common_var_names:
+                chd[key]['keywords'].append(w)
             if key not in special_channels:
                 chd[key]['fluxname'] = ['v_'+key]
             elif key == 'LCC':
@@ -195,16 +199,25 @@ if __name__ == '__main__':
                 chd[key]['fluxname'] = []
 
         for n in channels:
+            print(n)
             channel_outputFile = path + n+'ChannelOnly_' + inputname
             with open(channel_outputFile, 'w') as co:
                 for line in decs:
-                    if n == 'LCC' and 'fCa' in line and 'var' not in line:
+                    if n == 'K':
                         j = 10
                     lhs = line.split('=')[0]
                     # for u in unitWords:
                     #     lhs = lhs.replace(u,'')
                     if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
-                        co.write(line + '\n')
+                        if 'I_mem =' in line:
+                            keep = []
+                            I_split = line.split('=')[-1].split('(F*')
+                            for term in I_split:
+                                if any([k in term for k in chd[n]['keywords']]) and not any([k in term for k in chd[n]['nonkeywords']]):
+                                    keep.append('(F*'+term)
+                            co.write(lhs + ' = ' + keep[0] + ';\n')
+                        else:
+                            co.write(line + '\n')
                 for flux in chd[n]['fluxname']:
                     for line in vdict[flux]:
                         co.write(line + '\n')
