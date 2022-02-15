@@ -73,11 +73,11 @@ def find_exp(txt, var):
                         terms = [t for t in terms if t != '']
                         for it, term in enumerate(terms):
                             term=find_exp(txt,term)
-                            terms[it] = term.split(' = ')[-1]
+                            terms[it] = '('+term.split(' = ')[-1]+')'
                         if rhs[0] == '-':
-                            match = match.split(' = ')[0] + ' = -('+'-'.join(terms)+')'
+                            match = match.split(' = ')[0] + ' = -'+'-'.join(terms)
                         else:
-                            match = match.split(' = ')[0] + ' = ('+'-'.join(terms)+')'
+                            match = match.split(' = ')[0] + ' = '+'-'.join(terms)
                     else:
                         # addition only
                         terms = rhs.split('+')
@@ -175,16 +175,16 @@ if __name__ == '__main__':
         chd['Na']['keywords'] = ['Na','_m', '_h', '_j','z_fm','z_fh','z_fj','z_rm','z_rh','z_rj']
         chd['Na']['nonkeywords'] = ['NaK','NCX','zF']
         chd['K']['keywords'] = ['Ki','Ke','_K','zK','nK','X','i']
-        chd['K']['nonkeywords'] = ['K1','Kp','LCC','Kp','nK_stim','Na','NCX','Ca','CMDN','TRPN','MgA','_m','_j','_h']
+        chd['K']['nonkeywords'] = ['K1','Kp','LCC','nK_stim','Na','NCX','Ca','CMDN','TRPN','MgA','_j','_h']
         chd['K1']['keywords'] = ['Ki','Ke','K1','zK','nK']
         chd['K1']['nonkeywords'] = ['LCC','Kp','X','nK_stim']
         chd['Kp']['keywords'] = ['Ki','Ke','Kp','zK']
-        chd['Kp']['nonkeywords'] = []
+        chd['Kp']['nonkeywords'] = ['K1','z_rXi']
         chd['NaK']['keywords'] = ['NaK','_R','Nai','Nae','Ki','Ke','_P','MgA','_H','zF']
         chd['NaK']['nonkeywords'] = ['NCX']
         chd['LCC']['keywords'] = ['LCC','_fCa','_f1','_f2','_f3','d0','Cai','Cae','zCa','zK','mu_Ki','mu_Ke','z_fd','z_ff',
                                   'z_rd','z_rf','z_rCa']
-        chd['LCC']['nonkeywords'] = []
+        chd['LCC']['nonkeywords'] = ['v_K1','v_Kp','z_rXi']
         chd['NCX']['keywords'] = ['NCX','_r1','_r2','_r3','_r4','_r5','_r6','Cai','Cae','Nai','Nae']
         chd['NCX']['nonkeywords'] = []
 
@@ -206,8 +206,8 @@ if __name__ == '__main__':
                     if n == 'K':
                         j = 10
                     lhs = line.split('=')[0]
-                    # for u in unitWords:
-                    #     lhs = lhs.replace(u,'')
+                    if '=' in line:
+                        j = 10
                     if any([k in lhs for k in chd[n]['keywords']]) and not any([k in lhs for k in chd[n]['nonkeywords']]):
                         if 'I_mem =' in line:
                             keep = []
